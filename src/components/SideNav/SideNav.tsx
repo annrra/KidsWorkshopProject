@@ -70,7 +70,7 @@ const SideNav: React.FC = () => {
   return (
     <section className={classNames(styles.sidenav, { [styles.hide]: !showToggle })} data-nav={navState ? 'active' : 'idle'}>
       <button className={styles['nav-toggle']} onClick={handleNav}>
-        <svg className={styles.toggle} xmlns="http://www.w3.org/2000/svg" version="1.1" width="166px" height="166px" xmlns="http://www.w3.org/1999/xlink">
+        <svg className={styles.toggle} xmlns="http://www.w3.org/2000/svg" version="1.1" width="166px" height="166px">
           <g><path className={styles['toggle-path']} d="M -0.5,-0.5 C 54.8333,-0.5 110.167,-0.5 165.5,-0.5C 165.5,54.8333 165.5,110.167 165.5,165.5C 164.833,165.5 164.167,165.5 163.5,165.5C 146.707,157.222 132.373,145.722 120.5,131C 115.987,127.884 110.987,126.051 105.5,125.5C 94.8512,127.995 84.1845,130.495 73.5,133C 65.3478,135.113 61.0145,132.113 60.5,124C 62.2676,113.095 64.4343,102.261 67,91.5C 67.8098,86.7426 67.4764,82.0759 66,77.5C 64.2691,75.3834 62.1024,73.8834 59.5,73C 48.1931,71.8256 36.8597,70.8256 25.5,70C 19.5298,68.585 16.5298,64.7517 16.5,58.5C 19.0334,48.2971 19.8667,37.9637 19,27.5C 15.57,17.3944 9.73667,8.89435 1.5,2C 0.905578,1.53566 0.238911,1.36899 -0.5,1.5C -0.5,0.833333 -0.5,0.166667 -0.5,-0.5 Z"/></g>
         </svg>
         <span className={styles.beam}>
