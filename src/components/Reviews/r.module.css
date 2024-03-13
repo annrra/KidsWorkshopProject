@@ -1,0 +1,108 @@
+.reviews {
+	margin: 0 0 85px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+	position: relative;
+
+	.refresh::before {
+		animation: rotate 0.5s infinite ease-out;
+	}
+}
+
+.reviews-heading {
+	font-size: 30px;
+	margin: 0 0 20px 20px;
+}
+
+.reviews-wrap {
+	background-color: var(--paint-green);
+	border-radius: var(--block-border-radius);
+	padding: 60px 70px;
+	min-height: 225px;
+	display: grid;
+	grid-template-rows: repeat(1, 1fr);
+	grid-template-columns: repeat(2, 1fr);
+	grid-column-gap: 50px;
+	position: relative;
+
+	@media only screen and (max-width: 1000px) {
+		grid-template-rows: repeat(2, 1fr);
+		grid-template-columns: repeat(1, 1fr);
+		grid-row-gap: 30px;
+
+		.review:last-of-type {
+			flex-flow: row-reverse;
+
+			.avatar-image {
+				margin-left: 20px;
+				margin-right: 0;
+			}
+		}
+	}
+
+	@media only screen and (max-width: 600px) {
+		padding: 30px 40px;
+	}
+}
+
+.refresh {
+	display: block;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 0;
+	outline: 0;
+	background-color: var(--paint-tangerine);
+	position: absolute;
+	bottom: -20px;
+	left: 50%;
+	transform: translateX(-50%);
+	cursor: pointer;
+}
+
+.refresh::before {
+	content: "";
+	display: block;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' width='215px' height='215px' style='shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg%3E%3Cpath style='opacity:0.954' fill='%23fefffe' d='M 214.5,91.5 C 214.5,100.833 214.5,110.167 214.5,119.5C 207.558,163.625 182.891,193.125 140.5,208C 95.1339,220.787 56.3006,210.287 24,176.5C 10.0594,159.165 1.89272,139.498 -0.5,117.5C -0.5,112.833 -0.5,108.167 -0.5,103.5C 4.79685,58.3642 29.7968,31.1975 74.5,22C 103.949,17.8202 127.783,27.3202 146,50.5C 160.441,73.8485 161.107,97.5151 148,121.5C 133.247,141.309 113.747,148.476 89.5,143C 73.6516,136.98 65.3182,125.48 64.5,108.5C 65.5,108.5 66.5,108.5 67.5,108.5C 70.7603,119.59 78.0937,126.424 89.5,129C 103.455,130.44 114.288,125.273 122,113.5C 127.866,95.4171 123.366,80.2505 108.5,68C 96.2515,59.698 83.2515,58.3647 69.5,64C 45.8493,75.4637 36.0159,94.297 40,120.5C 46.6882,149.187 64.5215,166.354 93.5,172C 124.511,175.774 150.344,165.941 171,142.5C 189.078,116.985 194.078,88.9845 186,58.5C 180.527,37.8731 170.194,20.2064 155,5.5C 154.517,4.55198 154.351,3.55198 154.5,2.5C 161.377,4.84536 167.711,8.34536 173.5,13C 197.09,34.0147 210.757,60.1814 214.5,91.5 Z'/%3E%3C/g%3E%3C/svg%3E");
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: transform 0.5s ease;
+}
+
+.refresh:hover::before {
+	transform: rotate(360deg);
+}
+
+.review {
+	display: flex;
+	align-items: center;
+	color: var(--foreground-invert-color);
+}
+
+.avatar-image {
+	width: 100px;
+  height: 100px;
+	object-fit: cover;
+	margin-right: 23px;
+	border-radius: 50%;
+
+	@media only screen and (max-width: 600px) {
+		width: 80px;
+	}
+}

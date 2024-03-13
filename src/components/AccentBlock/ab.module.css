@@ -1,0 +1,165 @@
+.hero {
+  width: 100%;
+  min-height: 450px;
+  height: 450px;
+  border-radius: var(--block-border-radius);
+  background-color: var(--paint-tangerine);
+  color: var(--foreground-invert-color);
+  padding: 30px 100px;
+  margin: 0 0 32px;
+  font-size: 18px;
+  background-repeat: no-repeat;
+  background-position: 50% 35%;
+  background-size: cover;
+  border: 10px solid var(--paint-tangerine);
+}
+
+.flex {
+  display: flex;
+}
+
+.figure {
+  position: relative;
+  flex: 0 0 40%;
+
+  .badge {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    z-index: 3;
+
+    .accent-badge-data {
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      /*left: 10px;
+      top: 10px;*/
+      z-index: 7;
+      text-align: center;
+      padding: 30px;
+      line-height: 1.1;
+    }
+  }
+
+  .badge-stamp {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    transition: transform 0.3s ease;
+  }
+}
+
+.story {
+  flex: 1;
+  position: relative;
+  padding: 5% 5% 0;
+
+  .title,
+  .subtitle {
+    display: inline-block;
+    border-radius: 2px;
+    padding: 0px 15px 5px;
+    white-space: nowrap;
+
+    .headline {
+      margin: 0;
+      text-transform: lowercase;
+      font-size: 36px;
+    }
+  }
+
+  .title {
+    background-color: var(--paint-purple);
+    transform: rotate(-4deg);
+  }
+
+  .subtitle {
+    background-color: var(--paint-dark);
+    position: relative;
+    top: 20px;
+    left: 45px;
+  }
+}
+
+.figure:hover .badge-stamp {
+  transform: rotate(45deg);
+}
+
+.headline {
+  line-height: 1;
+}
+
+.accent-link {
+  display: inline-block;
+  background-color: var(--paint-purple);
+  border-radius: 4px;
+  margin-top: 70px;
+  padding: 8px 30px;
+  font-weight: bold;
+  white-space: nowrap;
+  position: relative;
+  left: 25px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .hero {
+    padding: 20px 100px;
+  }
+
+  .figure {
+    margin-right: 50px;
+  }
+
+  .headline {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .hero {
+    padding: 20px 70px;
+  }
+
+  .figure {
+    margin-right: 30px;
+  }
+
+  .headline {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .hero {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .hero .flex {
+    flex-direction: column;
+
+    .figure {
+      margin: 0 0 20px;
+    }
+
+    .story {
+      text-align: center;
+    }
+
+    .accent-link {
+      margin-top: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .figure .badge {
+    left: -40px;
+  }
+}

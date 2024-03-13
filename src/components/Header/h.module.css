@@ -1,0 +1,32 @@
+.header {
+  width: 100%;
+}
+
+.logo-wrapper {
+  text-align: center;
+  padding: 45px 0;
+
+  .logo-link {
+    display: inline-block;
+  }
+}
+
+.logo {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: var(--font-raleway);
+}
+
+.logo-figure {
+  width: 400px;
+  height: auto;
+
+  @media only screen and (max-width: 600px) {
+    max-width: 360px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

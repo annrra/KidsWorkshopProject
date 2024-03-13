@@ -1,0 +1,93 @@
+.heading {
+	font-size: 30px;
+	margin: 0 0 20px;
+	text-align: center;
+}
+
+.subheading {
+	font-size: 18px;
+	margin: 0 0 40px;
+	text-align: center;
+}
+
+.nl {
+	margin: 0 0 78px;
+}
+
+.form-wrap {
+	display: flex;
+	justify-content: center;
+	width: 65%;
+	margin: 0 auto;
+	background-color: #fff;
+	border-radius: 100px;
+	height: 100px;
+	border: 3px solid var(--paint-dark);
+	box-shadow: 3px 0 0 0 #fff, 0 3px 0 0 #fff, -3px 0 0 0 #fff, 0 -3px 0 0 #fff;
+	padding: 0 24px 0 46px;
+
+	@media only screen and (max-width: 1200px) {
+		width: 85%;
+	}
+
+	@media only screen and (max-width: 800px) {
+		width: 95%;
+
+		.input {
+			width: inherit;
+		}
+	}
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	width: 100%;
+
+	.input {
+		flex: 1;
+		height: 80%;
+		font-size: 30px;
+		border: 0;
+		outline: none;
+		padding-right: 30px;
+	}
+
+	.submit {
+		width: 58px;
+		height: 58px;
+		border-radius: 50%;
+		background-color: var(--paint-green);
+		border: 0;
+		outline: none;
+		background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' width='248px' height='248px' style='shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg%3E%3Cpath style='opacity:0.943' fill='%23fefffe' d='M 247.5,29.5 C 247.5,33.8333 247.5,38.1667 247.5,42.5C 243.411,63.8433 237.577,84.8433 230,105.5C 217.255,144.07 203.922,182.403 190,220.5C 184.475,235.539 173.975,244.539 158.5,247.5C 155.167,247.5 151.833,247.5 148.5,247.5C 138.293,246.143 129.793,241.476 123,233.5C 119.598,226.794 116.264,220.127 113,213.5C 106.337,194.844 99.6701,176.178 93,157.5C 90.5925,155.044 87.7591,153.211 84.5,152C 61.6295,145.063 39.2962,136.73 17.5,127C 7.06336,120.292 1.06336,110.792 -0.5,98.5C -0.5,96.5 -0.5,94.5 -0.5,92.5C 1.47792,74.663 11.1446,62.8296 28.5,57C 78.757,38.7693 129.424,21.7693 180.5,6C 193.228,1.98574 206.228,0.319073 219.5,1C 235.805,3.8041 245.139,13.3041 247.5,29.5 Z M 204.5,19.5 C 222.007,16.846 229.841,24.1793 228,41.5C 226.417,50.2528 224.417,58.9194 222,67.5C 206.797,115.108 190.797,162.442 174,209.5C 171.21,214.917 168.043,220.084 164.5,225C 150.289,231.819 140.122,227.986 134,213.5C 125.972,192.416 118.138,171.249 110.5,150C 130.442,129.723 150.609,109.89 171,90.5C 175.96,86.0394 176.627,81.0394 173,75.5C 169.205,72.1966 165.038,71.6966 160.5,74C 139.041,94.6246 117.708,115.458 96.5,136.5C 83.6644,131.541 70.6644,127.041 57.5,123C 47.5908,119.586 37.9241,115.586 28.5,111C 18.1119,103.826 15.9452,94.6593 22,83.5C 23.5578,81.6411 25.3911,80.1411 27.5,79C 35.6674,74.9447 44.0007,71.278 52.5,68C 90.5,55.3333 128.5,42.6667 166.5,30C 179.205,26.1602 191.872,22.6602 204.5,19.5 Z'/%3E%3C/g%3E%3C/svg%3E");
+		background-size: 30px 30px;
+		background-repeat: no-repeat;
+		background-position: 46% 51%;
+		font-size: 0;
+		cursor: pointer;
+	}
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.form.active .submit {
+	background-color: #ccc;
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' width='215px' height='215px' style='shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg%3E%3Cpath style='opacity:0.954' fill='%23fefffe' d='M 214.5,91.5 C 214.5,100.833 214.5,110.167 214.5,119.5C 207.558,163.625 182.891,193.125 140.5,208C 95.1339,220.787 56.3006,210.287 24,176.5C 10.0594,159.165 1.89272,139.498 -0.5,117.5C -0.5,112.833 -0.5,108.167 -0.5,103.5C 4.79685,58.3642 29.7968,31.1975 74.5,22C 103.949,17.8202 127.783,27.3202 146,50.5C 160.441,73.8485 161.107,97.5151 148,121.5C 133.247,141.309 113.747,148.476 89.5,143C 73.6516,136.98 65.3182,125.48 64.5,108.5C 65.5,108.5 66.5,108.5 67.5,108.5C 70.7603,119.59 78.0937,126.424 89.5,129C 103.455,130.44 114.288,125.273 122,113.5C 127.866,95.4171 123.366,80.2505 108.5,68C 96.2515,59.698 83.2515,58.3647 69.5,64C 45.8493,75.4637 36.0159,94.297 40,120.5C 46.6882,149.187 64.5215,166.354 93.5,172C 124.511,175.774 150.344,165.941 171,142.5C 189.078,116.985 194.078,88.9845 186,58.5C 180.527,37.8731 170.194,20.2064 155,5.5C 154.517,4.55198 154.351,3.55198 154.5,2.5C 161.377,4.84536 167.711,8.34536 173.5,13C 197.09,34.0147 210.757,60.1814 214.5,91.5 Z'/%3E%3C/g%3E%3C/svg%3E");
+	background-position: 50% 50%;
+	cursor: default;
+	animation: rotate 0.5s infinite ease-out;
+}
+
+.feedback {
+	text-align: center;
+	margin: 15px 0 0;
+	min-height: 20px;
+}
