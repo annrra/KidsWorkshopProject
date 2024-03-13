@@ -78,6 +78,7 @@
   .repulse .footer-uncover {
     flex-flow: wrap;
     margin-top: 20px;
+    font-size: 14px;
   }
 
   .footer {
