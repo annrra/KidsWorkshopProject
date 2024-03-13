@@ -108,6 +108,12 @@
 	}
 }
 
+@media only screen and (max-width: 800px) {
+	.reviews {
+		margin-bottom: 65px;
+	}
+}
+
 @media only screen and (max-width: 600px) {
 	.reviews-heading {
 		font-size: 24px;

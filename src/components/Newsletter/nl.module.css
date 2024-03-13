@@ -21,10 +21,10 @@
 	margin: 0 auto;
 	background-color: #fff;
 	border-radius: 100px;
-	height: 100px;
+	height: 80px;
 	border: 3px solid var(--paint-dark);
 	box-shadow: 3px 0 0 0 #fff, 0 3px 0 0 #fff, -3px 0 0 0 #fff, 0 -3px 0 0 #fff;
-	padding: 0 24px 0 46px;
+	padding: 0 14px 0 46px;
 
 	@media only screen and (max-width: 1200px) {
 		width: 85%;
@@ -92,6 +92,12 @@
 	min-height: 20px;
 }
 
+@media only screen and (max-width: 800px) {
+	.nl {
+		margin-bottom: 52px;
+	}
+}
+
 @media only screen and (max-width: 600px) {
 	.heading {
 		font-size: 24px;
@@ -104,6 +110,7 @@
 	.form-wrap {
 		height: 70px;
 		padding-left: 40px;
+		border-width: 2px;
 	}
 
 	.form {

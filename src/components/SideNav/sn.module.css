@@ -289,3 +289,21 @@
 		width: 80%;
 	}
 }
+
+@media only screen and (max-width: 600px) {
+	.menu {
+		padding-top: 6vh;
+	}
+
+	.menu-list li a {
+		padding: 12px 20px;
+	}
+
+	.menu-list h3 {
+		font-size: 26px;
+	}
+
+	.nav-footer {
+		margin-bottom: 30px;
+	}
+}
