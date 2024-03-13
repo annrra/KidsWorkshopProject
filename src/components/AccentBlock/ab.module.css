@@ -113,7 +113,7 @@
   }
 
   .figure {
-    margin-right: 50px;
+    flex: 0 0 20%;
   }
 
   .headline {
@@ -123,7 +123,8 @@
 
 @media only screen and (max-width: 1000px) {
   .hero {
-    padding: 20px 70px;
+    padding: 20px 30px;
+    border-width: 5px;
   }
 
   .figure {
@@ -132,6 +133,17 @@
 
   .headline {
     font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .story {
+    .title,
+    .subtitle {
+      .headline {
+        font-size: 30px;
+      }
+    }
   }
 }
 
@@ -150,16 +162,55 @@
 
     .story {
       text-align: center;
+      padding-top: 0;
     }
 
     .accent-link {
-      margin-top: 20px;
+      margin-top: 45px;
+      transform: rotate(4deg);
+      left: -50px;
     }
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .figure .badge {
-    left: -40px;
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .story {
+    padding-left: 0;
+
+    .title,
+    .subtitle {
+      .headline {
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .story {
+    .subtitle {
+      left: 30px;
+    }
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .hero {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .story {
+    .title,
+    .subtitle {
+      .headline {
+        font-size: 24px;
+      }
+    }
   }
 }

@@ -73,3 +73,10 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .repulse .footer-uncover {
+    flex-flow: wrap;
+    margin-top: 20px;
+  }
+}

@@ -69,7 +69,7 @@
 	color: var(--foreground-invert-color);
 
 	@media only screen and (max-width: 800px) {
-		right: -25px;
+		right: -10px;
 		bottom: -40px;
 	}
 }
