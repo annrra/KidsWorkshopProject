@@ -47,7 +47,7 @@
 	.input {
 		flex: 1;
 		height: 80%;
-		font-size: 30px;
+		font-size: 26px;
 		border: 0;
 		outline: none;
 		padding-right: 30px;
@@ -90,4 +90,31 @@
 	text-align: center;
 	margin: 15px 0 0;
 	min-height: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+	.heading {
+		font-size: 24px;
+	}
+	
+	.subheading {
+		font-size: 16px;
+	}
+
+	.form-wrap {
+		height: 70px;
+		padding-left: 40px;
+	}
+
+	.form {
+		.input {
+			font-size: 20px;
+		}
+	
+		.submit {
+			width: 40px;
+			height: 40px;
+			background-size: 20px 20px;
+		}
+	}
 }

@@ -94,3 +94,16 @@
 .more-link:hover .more::before {
 	transform: rotate(45deg);
 }
+
+@media only screen and (max-width: 600px) {
+	.more {
+		width: 130px;
+		height: 130px;
+		font-size: 100%;
+	}
+
+	.more::before {
+		width: 130px;
+		height: 130px;
+	}
+}

@@ -79,4 +79,12 @@
     flex-flow: wrap;
     margin-top: 20px;
   }
+
+  .footer {
+    background: linear-gradient(to right, var(--paint-tangerine) 70%, var(--paint-yellow) 30%);
+  }
+
+  .curv {
+    background-position: 90% 10%;
+  }
 }
