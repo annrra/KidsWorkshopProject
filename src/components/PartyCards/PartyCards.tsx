@@ -28,7 +28,7 @@ const PartyCards: React.FC = async () => {
         );
       })}
       <Link href={'/'} className={styles['more-link']}>
-        <div className={styles.more}>виж всички подобни</div>
+        <div className={styles.more}>+</div>
       </Link>
     </section>
   );

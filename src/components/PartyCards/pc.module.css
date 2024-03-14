@@ -56,32 +56,30 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	width: 160px;
-	height: 160px;
+	width: 70px;
+	height: 70px;
 	padding: 31px;
 	position: absolute;
 	z-index: 8;
-	bottom: -60px;
-	right: -55px;
-	font-size: 18px;
-	font-weight: 700;
+	bottom: -35px;
+	right: -35px;
+	font-size: 46px;
+	font-weight: 400;
 	line-height: 1.1;
-	color: var(--foreground-invert-color);
-
-	@media only screen and (max-width: 800px) {
-		right: -10px;
-		bottom: -40px;
-	}
+	color: var(--paint-dark);
+	transition: transform 0.3s ease;
 }
 
 .more::before {
 	content: '';
-	width: 160px;
-	height: 160px;
-	background-image: url('/badge.svg');
+	width: 70px;
+	height: 70px;
+	/*background-image: url('/badge.svg');
 	background-size: cover;
 	background-position: center center;
-	background-repeat: no-repeat;
+	background-repeat: no-repeat;*/
+	background-color: var(--background-color);
+	border-radius: 50%;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -91,19 +89,22 @@
 	transition: transform 0.3s ease;
 }
 
+.more:hover {
+	transform: rotate(90deg);
+}
+
 .more-link:hover .more::before {
 	transform: rotate(45deg);
 }
 
 @media only screen and (max-width: 600px) {
 	.more {
-		width: 130px;
-		height: 130px;
-		font-size: 100%;
+		right: -15px;
+		bottom: -15px;
 	}
 
-	.more::before {
+	/*.more::before {
 		width: 130px;
 		height: 130px;
-	}
+	}*/
 }

@@ -32,6 +32,10 @@
     height: 160px;
     z-index: 3;
 
+    @media only screen and (min-width: 1000px) {
+      left: -65px;
+    }
+
     .accent-badge-data {
       font-weight: bold;
       display: inline-flex;
@@ -43,6 +47,13 @@
       text-align: center;
       padding: 30px;
       line-height: 1.1;
+      justify-content: center;
+    }
+
+    .accent-badge-data svg {
+      max-width: 70px;
+      transition: transform 0.3s ease;
+      transform: rotate(-45deg);
     }
   }
 
@@ -55,6 +66,14 @@
     z-index: 5;
     transition: transform 0.3s ease;
   }
+}
+
+.badge:hover .badge-stamp {
+  transform: rotate(45deg);
+}
+
+.badge:hover .accent-badge-data svg {
+  transform: rotate(-90deg);
 }
 
 .story {
@@ -91,10 +110,6 @@
     left: 45px;
     margin: 20px 0;
   }
-}
-
-.badge:hover .badge-stamp {
-  transform: rotate(45deg);
 }
 
 .headline {
