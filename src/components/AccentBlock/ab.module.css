@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
   background-position: 50% 35%;
   background-size: cover;
-  border: 10px solid var(--paint-tangerine);
+  border: 5px solid var(--paint-tangerine);
 }
 
 .flex {
@@ -145,7 +145,6 @@
 @media only screen and (max-width: 1000px) {
   .hero {
     padding: 20px 30px;
-    border-width: 5px;
   }
 
   .figure {

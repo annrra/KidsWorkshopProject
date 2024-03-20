@@ -1,0 +1,10 @@
+.about {
+  width: 55%;
+  margin: 65px auto 80px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.about p {
+  margin: 0 0 1rem;
+}

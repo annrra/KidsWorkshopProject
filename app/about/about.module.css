@@ -1,0 +1,32 @@
+.reactive {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.core {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1400px) {
+  .container {
+    max-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    max-width: 85%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    max-width: 95%;
+  }
+}

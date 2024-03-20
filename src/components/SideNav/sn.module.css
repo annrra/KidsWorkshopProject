@@ -9,8 +9,8 @@
 	width: 166px;
 	height: 166px;
 	position: fixed;
-	top: -30px;
-	right: -30px;
+	top: 0;
+	right: 0;
 	z-index: 40;
 	background-color: transparent;
 	cursor: pointer;
@@ -27,6 +27,18 @@
 
 .toggle {
 	position: relative;
+	top: -30px;
+	right: -30px;
+	transition: all 0.3s ease-in-out;
+}
+
+.shift .toggle {
+	transform: translate(-10px, 10px);
+}
+
+.toggle-path {
+	fill: var(--paint-tangerine);
+  transition: d 0.5s ease;
 }
 
 .beam {
@@ -36,8 +48,8 @@
 	flex-direction: column;
 	align-items: center;
 	position: absolute;
-	top: 45%;
-	right: 28%;
+	top: 28%;
+	right: 11%;
 	z-index: 45;
 	transform: translateY(-50%);
 

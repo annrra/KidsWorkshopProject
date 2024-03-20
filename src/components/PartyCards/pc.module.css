@@ -74,10 +74,6 @@
 	content: '';
 	width: 70px;
 	height: 70px;
-	/*background-image: url('/badge.svg');
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;*/
 	background-color: var(--background-color);
 	border-radius: 50%;
 	position: absolute;
@@ -102,9 +98,4 @@
 		right: -15px;
 		bottom: -15px;
 	}
-
-	/*.more::before {
-		width: 130px;
-		height: 130px;
-	}*/
 }

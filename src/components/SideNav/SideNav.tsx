@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import styles from './sn.module.css';
 import classNames from 'classnames';
 import Link from 'next/link';
@@ -17,9 +18,24 @@ const SideNav: React.FC = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [navState, setNavState] = useState(false);
+  const [shift, setShift] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showToggle, setShowToggle] = useState(true);
   const [menu, setMenu] = useState<MenuProps[]>([]);
+
+  const blobRange = [
+    `M-0.5 -0.5C54.8333 -0.5 110.167 -0.5 165.5 -0.5C165.5 54.8333 165.5 110.167 165.5 165.5C164.833 165.5 164.167 165.5 163.5 165.5C131 158 132.5 134 112 129.5C91.5 125 80.5 138.5 63.5 131.833C46.5 125.167 69.5 96 61.5 79.5C53.5 63 26.614 79.7023 18.0519 65C12.6181 55.6695 19 36 19 27.5C19 19 9.73667 8.89435 1.5 2C0.905578 1.53566 0.238911 1.36899 -0.5 1.5C-0.5 0.833333 -0.5 0.166667 -0.5 -0.5Z`,
+    `M-0.5 -0.5C54.8333 -0.5 110.167 -0.5 165.5 -0.5C165.5 54.8333 165.5 110.167 165.5 165.5C164.833 165.5 164.167 165.5 163.5 165.5C138 140.5 119 151 104 144.5C89 138 100.5 118.167 83.5 111.5C66.5 104.833 49 116 41 99.5C33 83 46.5621 74.7023 38 60C32.5662 50.6695 9 44.5 5.5 36C2 27.5 9.73667 8.89435 1.5 2C0.905578 1.53566 0.238911 1.36899 -0.5 1.5C-0.5 0.833333 -0.5 0.166667 -0.5 -0.5Z`
+  ];
+
+  const pathVariants = {
+    on: {
+      d: blobRange[0]
+    },
+    off: {
+      d: blobRange[1]
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -47,7 +63,11 @@ const SideNav: React.FC = () => {
   }, []);
 
   const handleNav = () => {
-    setNavState(!navState); 
+    setNavState(!navState);
+    setShift(true);
+    setTimeout(() => {
+      setShift(false);
+    }, 300);
   }
 
   const idleNav = () => {
@@ -68,10 +88,25 @@ const SideNav: React.FC = () => {
   }, []);
 
   return (
-    <section className={classNames(styles.sidenav, { [styles.hide]: !showToggle })} data-nav={navState ? 'active' : 'idle'}>
+    <section
+      className={classNames(styles.sidenav, {
+        [styles.hide]: !showToggle,
+        [styles.shift]: shift
+      })}
+      data-nav={navState ? 'active' : 'idle'}
+    >
       <button className={styles['nav-toggle']} onClick={handleNav}>
-        <svg className={styles.toggle} xmlns="http://www.w3.org/2000/svg" version="1.1" width="166px" height="166px">
-          <g><path className={styles['toggle-path']} d="M -0.5,-0.5 C 54.8333,-0.5 110.167,-0.5 165.5,-0.5C 165.5,54.8333 165.5,110.167 165.5,165.5C 164.833,165.5 164.167,165.5 163.5,165.5C 146.707,157.222 132.373,145.722 120.5,131C 115.987,127.884 110.987,126.051 105.5,125.5C 94.8512,127.995 84.1845,130.495 73.5,133C 65.3478,135.113 61.0145,132.113 60.5,124C 62.2676,113.095 64.4343,102.261 67,91.5C 67.8098,86.7426 67.4764,82.0759 66,77.5C 64.2691,75.3834 62.1024,73.8834 59.5,73C 48.1931,71.8256 36.8597,70.8256 25.5,70C 19.5298,68.585 16.5298,64.7517 16.5,58.5C 19.0334,48.2971 19.8667,37.9637 19,27.5C 15.57,17.3944 9.73667,8.89435 1.5,2C 0.905578,1.53566 0.238911,1.36899 -0.5,1.5C -0.5,0.833333 -0.5,0.166667 -0.5,-0.5 Z"/></g>
+        <svg className={styles.toggle} width="166" height="166" viewBox="0 0 166 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <motion.path
+            className={styles['toggle-path']}
+            d="M-0.5 -0.5C54.8333 -0.5 110.167 -0.5 165.5 -0.5C165.5 54.8333 165.5 110.167 165.5 165.5C164.833 165.5 164.167 165.5 163.5 165.5C131 158 132.5 134 112 129.5C91.5 125 80.5 138.5 63.5 131.833C46.5 125.167 69.5 96 61.5 79.5C53.5 63 26.614 79.7023 18.0519 65C12.6181 55.6695 19 36 19 27.5C19 19 9.73667 8.89435 1.5 2C0.905578 1.53566 0.238911 1.36899 -0.5 1.5C-0.5 0.833333 -0.5 0.166667 -0.5 -0.5Z"
+            variants={pathVariants}
+            animate={navState ? 'off' : 'on'}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.01
+            }}
+          />
         </svg>
         <span className={styles.beam}>
           <span className={styles.eyes}></span>

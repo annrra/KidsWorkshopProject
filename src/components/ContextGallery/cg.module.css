@@ -1,0 +1,22 @@
+.gallery {
+	display: grid;
+	/*grid-template-rows: repeat(2, 1fr);*/
+	grid-template-columns: repeat(3, 1fr);
+	grid-column-gap: 15px;
+	grid-row-gap: 15px;
+	grid-auto-rows: auto;
+	margin: 15px 0 0;
+}
+
+.block {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--block-border-radius);
+}
+
+.thumb {
+	width: 100%;
+	height: auto;
+	min-height: 100%;
+	object-fit: cover;
+}

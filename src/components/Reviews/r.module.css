@@ -1,5 +1,5 @@
 .reviews {
-	margin: 0 0 85px;
+	margin: 0 0 70px;
 }
 
 @keyframes rotate {
@@ -55,6 +55,25 @@
 	}
 }
 
+.review {
+	display: flex;
+	align-items: center;
+	color: var(--foreground-invert-color);
+}
+
+.avatar-image {
+	width: 100px;
+  height: 100px;
+	object-fit: cover;
+	margin-right: 23px;
+	border-radius: 50%;
+
+	@media only screen and (max-width: 600px) {
+		width: 80px;
+		height: 80px;
+	}
+}
+
 .refresh {
 	display: block;
 	width: 40px;
@@ -87,25 +106,6 @@
 
 .refresh:hover::before {
 	transform: rotate(360deg);
-}
-
-.review {
-	display: flex;
-	align-items: center;
-	color: var(--foreground-invert-color);
-}
-
-.avatar-image {
-	width: 100px;
-  height: 100px;
-	object-fit: cover;
-	margin-right: 23px;
-	border-radius: 50%;
-
-	@media only screen and (max-width: 600px) {
-		width: 80px;
-		height: 80px;
-	}
 }
 
 @media only screen and (max-width: 800px) {
