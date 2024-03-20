@@ -119,10 +119,13 @@ const SideNav: React.FC = () => {
           <div className={styles.menu}>
             <ul className={styles['menu-list']}>
               {menu.map((item: MenuProps, index: number) => {
+                const [title, state] = (item.label === 'Начало' || item.url !== '/') 
+                  ? [item.label, ''] 
+                  : ['Under development', 'disable'];
 
                 return (
-                  <li className={classNames(styles['menu-item'], styles[`item-${index}`])} key={index}>
-                    <Link href={item.url} onClick={idleNav} title="Under development">
+                  <li className={classNames(styles['menu-item'], styles[`item-${index}`], styles[`${state}`])} key={index}>
+                    <Link href={item.url} onClick={idleNav} title={title}>
                       <h3>{item.label}</h3>
                       <div className={`${styles['nav-subtitle']}`}>{item.description}</div>
                     </Link>

@@ -20,7 +20,7 @@ const AccentBlock: React.FC = async () => {
     accentUri = accent.uri;
     accentButton = accent.accent.accentButton;
     accentDate = accent.accent.accentDate;
-    accentUrl = accent.accent.accentUrl;
+    accentUrl = accent.accent.accentUrl.nodes[0].uri;
     accentVideo = accent.accent.accentVideo;
     accentImageSourceUrl = accent.featuredImage.node.sourceUrl;
   } else {
@@ -72,7 +72,7 @@ const AccentBlock: React.FC = async () => {
           <div className={styles.subtitle}>
             <h2 className={styles.headline}>{accentSubHeading}</h2>
           </div>
-          <Link href={accentUri} className={`${styles['accent-link']}`}>
+          <Link href={accentUrl} className={`${styles['accent-link']}`}>
             {accentButton}
           </Link>
         </div>

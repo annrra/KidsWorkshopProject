@@ -31,6 +31,13 @@ export async function getAccentContent() {
                   uri
                 }
               }
+              accentUrl {
+                nodes {
+                  uri
+                  link
+                  slug
+                }
+              }
             }
             featuredImage {
               node {
