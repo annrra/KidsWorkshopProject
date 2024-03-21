@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './cg.module.css';
+import classNames from "classnames";
 
 type ImageData = {
   [key: string]: {
@@ -12,12 +13,16 @@ type ImageData = {
 
 interface ImageProps {
   imageData: ImageData;
+  fraction?: boolean;
 }
 
-const ContextGallery: React.FC<ImageProps> = async ({imageData}) => {
+const ContextGallery: React.FC<ImageProps> = async ({imageData, fraction = false}) => {
 
   return (
-    <section className={styles.gallery}>
+    <section className={classNames(styles.gallery, {
+        [styles.fr]: fraction
+      })}
+    >
       {Object.keys(imageData)
         .filter((key: string) => imageData[key] !== null)
         .map((key: string, index: number) => (

@@ -10,7 +10,7 @@ const AccentBlock: React.FC = async () => {
   const accentData = await getAccentContent();
   const accent = accentData.posts.nodes[0];
 
-  let accentTitle, accentHeading, accentSubHeading, accentExcerpt, accentUri, accentButton, accentDate, accentUrl, accentVideo, accentImageSourceUrl;
+  let accentTitle, accentHeading, accentSubHeading, accentExcerpt, accentUri, accentButton, accentDate, accentUrl, accentPromoLink, accentVideo, accentImageSourceUrl;
 
   if (accent) {
     accentTitle = accent.title;
@@ -20,7 +20,8 @@ const AccentBlock: React.FC = async () => {
     accentUri = accent.uri;
     accentButton = accent.accent.accentButton;
     accentDate = accent.accent.accentDate;
-    accentUrl = accent.accent.accentUrl.nodes[0].uri;
+    accentUrl = accent.accent.accentUrl?.nodes[0]?.uri;
+    accentPromoLink = accent.accent.accentPromoLink?.nodes[0]?.uri;
     accentVideo = accent.accent.accentVideo;
     accentImageSourceUrl = accent.featuredImage.node.sourceUrl;
   } else {
@@ -31,39 +32,24 @@ const AccentBlock: React.FC = async () => {
     <section className={styles.hero} style={{ backgroundImage: `url(${accentImageSourceUrl})` }}>
       <div className={classNames(styles.flex, styles.cl2)}>
         <div className={styles.figure}>
-          <div className={styles.badge}>
-            <Image
-              src={badge}
-              alt=""
-              className={styles['badge-stamp']}
-              priority
-              width={0}
-              height={0}
-              sizes="100vw"
-            />
-            <span className={styles['accent-badge-data']}>
-              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="221.000000pt" height="221.000000pt" viewBox="0 0 221.000000 221.000000" preserveAspectRatio="xMidYMid meet">
-                <g transform="translate(0.000000,221.000000) scale(0.100000,-0.100000)" fill="#f0eef0" stroke="none">
-                <path d="M435 2129 c-151 -34 -291 -154 -346 -297 -27 -71 -36 -203 -19 -281
-                26 -117 102 -227 203 -294 83 -55 162 -77 301 -84 106 -5 126 -9 159 -31 20
-                -14 37 -28 37 -33 0 -4 -20 -22 -44 -39 -43 -29 -48 -30 -154 -30 -131 0 -209
-                -20 -298 -78 -274 -177 -288 -585 -27 -784 84 -63 157 -89 269 -95 148 -9 264
-                35 370 141 159 159 186 395 69 590 -20 33 -32 62 -27 65 69 45 1222 886 1222
-                892 0 15 -85 70 -125 80 -68 19 -173 6 -242 -28 -33 -17 -197 -129 -364 -250
-                -167 -121 -327 -237 -356 -257 l-52 -37 -38 27 c-21 15 -42 31 -46 34 -4 4 8
-                33 28 66 52 85 69 153 68 259 -1 180 -92 331 -250 417 -95 52 -231 71 -338 47z
-                m217 -217 c102 -45 158 -124 166 -233 6 -86 -14 -145 -72 -207 -52 -57 -106
-                -84 -182 -90 -188 -15 -338 156 -294 337 41 171 224 264 382 193z m423 -747
-                c47 -46 19 -118 -45 -118 -66 0 -95 82 -44 122 35 27 59 26 89 -4z m-442 -341
-                c65 -22 139 -91 167 -156 18 -43 22 -65 18 -124 -6 -84 -35 -142 -98 -197
-                -167 -143 -434 -33 -457 187 -20 198 180 355 370 290z"/>
-                <path d="M1191 979 c-92 -67 -110 -84 -99 -94 20 -20 566 -414 631 -456 118
-                -76 243 -93 341 -45 59 29 95 62 80 75 -19 17 -819 594 -829 597 -6 3 -62 -32
-                -124 -77z"/>
-                </g>
-              </svg>
-            </span>
-          </div>
+          <Link href={accentPromoLink} className={`${styles['accent-promo']}`}>
+            <div className={styles.badge}>
+              <Image
+                src={badge}
+                alt=""
+                className={styles['badge-stamp']}
+                priority
+                width={0}
+                height={0}
+                sizes="100vw"
+              />
+              <span className={styles['accent-badge-data']}>
+                <svg viewBox="0 0 264 249" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path className={styles.bloom} fillRule="evenodd" clipRule="evenodd" d="M109.676 0.721728C121.77 -1.6961 131.37 1.96095 138.476 11.6932C145.193 28.506 149.765 45.8774 152.19 63.8074C162.707 37.2815 181.449 19.9102 208.419 11.6932C223.905 12.9911 230.762 21.2196 228.99 36.3789C221.804 53.9705 212.205 69.9706 200.19 84.3789C224.259 81.4306 244.83 88.2877 261.904 104.95C264.658 114.53 263.287 123.216 257.79 131.007C239.41 136.66 221.124 139.403 202.933 139.236C221.195 151.539 234.909 167.539 244.076 187.236C243.099 195.98 238.527 201.924 230.361 205.065C206.758 207.676 187.101 199.905 171.39 181.75C171.791 196.354 171.791 210.981 171.39 225.636C169.717 245.552 159.203 252.409 139.847 246.207C135.923 244.932 132.723 242.644 130.247 239.35C122.019 224.72 116.533 209.176 113.79 192.722C104.973 206.112 93.5447 216.626 79.5043 224.265C58.4669 229.674 47.9527 221.903 47.9614 200.95C54.306 186.433 62.0773 172.719 71.2757 159.807C70.3615 158.893 69.4471 157.979 68.5329 157.065C52.7444 164.22 36.2873 166.506 19.1614 163.922C-0.423925 156.993 -4.99517 144.65 5.44716 126.893C24.1757 115.464 44.2901 107.236 65.79 102.207C55.5378 92.4196 46.852 81.4481 39.7329 69.2932C33.7266 56.8743 34.6408 44.9884 42.4757 33.636C48.6282 28.7482 55.4854 27.3768 63.0472 29.5217C75.1593 36.1367 85.6735 44.8222 94.59 55.5789C89.4647 34.4682 94.4932 16.1824 109.676 0.721728ZM126.133 93.9789C161.127 93.7482 173.47 110.205 163.161 143.35C142.764 165.18 123.564 164.266 105.561 140.607C99.1953 118.635 106.052 103.092 126.133 93.9789Z"/>
+                </svg>
+              </span>
+            </div>
+          </Link>
         </div>
         <div className={styles.story}>
           <div className={styles.title}>

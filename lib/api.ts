@@ -38,6 +38,13 @@ export async function getAccentContent() {
                   slug
                 }
               }
+              accentPromoLink {
+                nodes {
+                  uri
+                  link
+                  slug
+                }
+              }
             }
             featuredImage {
               node {
@@ -263,6 +270,77 @@ export async function getAboutContent() {
               sourceUrl
               srcSet
               uri
+            }
+          }
+          gallery {
+            image1 {
+              node {
+                sourceUrl
+              }
+            }
+            image2 {
+              node {
+                sourceUrl
+              }
+            }
+            image3 {
+              node {
+                sourceUrl
+              }
+            }
+            image4 {
+              node {
+                sourceUrl
+              }
+            }
+            image5 {
+              node {
+                sourceUrl
+              }
+            }
+            image6 {
+              node {
+                sourceUrl
+              }
+            }
+          }
+        }
+      }`
+    }),
+  });
+   
+  // Handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+
+  const json = await res.json();
+  return json.data;
+}
+
+export async function getPostBySlug(slug: string) {
+	if (!API_URL) {
+    console.error('API_URL is not defined.');
+    return;
+  }
+
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      query:`{
+        post(id: "${slug}", idType: URI) {
+          title
+          excerpt
+          content
+          uri
+          slug
+          status
+          categories(where: {name: "events"}) {
+            nodes {
+              name
+              slug
             }
           }
           gallery {

@@ -5,6 +5,18 @@ import { metadata } from '@/app/layout';
 import classNames from "classnames";
 import styles from './f.module.css';
 
+const user = 'ivanova.denitza';
+const domain = 'gmail.com';
+const email = `${user}@${domain}`;
+
+const MailtoLink: React.FC<{ email: string }> = ({ email }) => {
+  return (
+    <a href={`mailto:${email}`} className={styles.mailme}>
+      {email}
+    </a>
+  );
+};
+
 const Footer: React.FC = async () => {
   const button = '/button.png';
   const metaTitle = metadata.title || 'Sharenoto Party';
@@ -31,7 +43,7 @@ const Footer: React.FC = async () => {
           </div>
           <div className={classNames(styles.flex, styles['footer-uncover'])}>
             <span className={styles.pl}>+359 884 870 066</span>
-            <span className={styles.pl}>ivanova.denitza@gmail.com</span>
+            <span className={styles.pl}><MailtoLink email={email} /></span>
             <span className={styles.pl}>
               <Link href="https://www.facebook.com/Alegriaworkshop/" className={`${styles['footer-follow-facebook']}`}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

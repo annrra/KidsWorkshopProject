@@ -284,6 +284,10 @@
 	padding: 20px 0 0;
 }
 
+.callus {
+	white-space: nowrap;
+}
+
 .social {
 	font-size: 1rem;
 	line-height: 1;
@@ -320,5 +324,19 @@
 
 	.nav-footer {
 		margin-bottom: 30px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.findus {
+		flex-direction: column;
+	}
+
+	.writeus {
+		margin: 5px 0;
+	}
+
+	.nav-footer {
+		margin-bottom: 15px;
 	}
 }

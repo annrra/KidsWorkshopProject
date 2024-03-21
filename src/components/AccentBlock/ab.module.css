@@ -39,7 +39,6 @@
     .accent-badge-data {
       font-weight: bold;
       display: inline-flex;
-      align-items: center;
       width: 100%;
       height: 100%;
       position: relative;
@@ -51,10 +50,14 @@
     }
 
     .accent-badge-data svg {
-      max-width: 70px;
+      max-width: 85px;
       transition: transform 0.3s ease;
       transform: rotate(-45deg);
     }
+  }
+
+  .bloom {
+    fill: var(--foreground-invert-color);
   }
 
   .badge-stamp {
