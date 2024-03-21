@@ -1,9 +1,6 @@
-"use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import styles from './cg.module.css';
-import { getAboutContent } from '@/lib/api';
 
 type ImageData = {
   [key: string]: {
@@ -17,34 +14,17 @@ interface ImageProps {
   imageData: ImageData;
 }
 
-const ContextGallery: React.FC = () => {
-  const [gallery, setGallery] = useState<ImageData>({});
-
-  const fetchData = async () => {
-    try {
-      const galleryData = await getAboutContent();
-      const gallery = galleryData.pageBy.gallery;
-
-      setGallery(gallery);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-  
+const ContextGallery: React.FC<ImageProps> = async ({imageData}) => {
 
   return (
     <section className={styles.gallery}>
-      {Object.keys(gallery)
-        .filter((key: string) => gallery[key] !== null)
+      {Object.keys(imageData)
+        .filter((key: string) => imageData[key] !== null)
         .map((key: string, index: number) => (
           <div className={styles.block} key={index}>
-            {gallery[key]?.node?.sourceUrl && (
+            {imageData[key]?.node?.sourceUrl && (
               <Image
-                src={ gallery[key]?.node?.sourceUrl as string }
+                src={ imageData[key]?.node?.sourceUrl as string }
                 alt=""
                 className={styles['thumb']}
                 priority

@@ -1,12 +1,15 @@
-import Image from "next/image";
 import styles from "./about.module.css";
 import { Header } from '@/src/components/Header';
 import { SideNav } from '@/src/components/SideNav';
 import { Footer } from '@/src/components/Footer';
 import { Apropos } from '@/src/components/Apropos';
 import { ContextGallery } from '@/src/components/ContextGallery';
+import { getAboutContent } from '@/lib/api';
 
-export default function About() {
+export default async function About() {
+  const galleryData = await getAboutContent();
+  const gallery = galleryData.pageBy.gallery;
+
   return (
     <div className={styles.reactive}>
       <SideNav />
@@ -15,7 +18,7 @@ export default function About() {
       </div>
       <div className={styles.core}>
         <div className={styles.container}>
-          <ContextGallery />
+          <ContextGallery imageData={gallery} />
           <Apropos />
         </div>
       </div>

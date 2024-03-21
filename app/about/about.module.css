@@ -9,24 +9,6 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
-}
-
-@media only screen and (max-width: 1400px) {
-  .container {
-    max-width: 90%;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .container {
-    max-width: 85%;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .container {
-    max-width: 95%;
-  }
 }

@@ -8,3 +8,17 @@
 .about p {
   margin: 0 0 1rem;
 }
+
+@media only screen and (max-width: 1000px) {
+  .about {
+    width: 75%;
+    margin: 55px auto 70px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .about {
+    width: 85%;
+    margin: 45px auto 60px;
+  }
+}
