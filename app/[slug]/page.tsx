@@ -5,6 +5,7 @@ import { Footer } from '@/src/components/Footer';
 import { ContextGallery } from '@/src/components/ContextGallery';
 import { getPostBySlug } from '@/lib/api';
 import { notFound } from 'next/navigation'
+import classNames from "classnames";
 
 type PostProps = {
   params: {
@@ -38,6 +39,7 @@ export default async function Post({ params: {slug} }: PostProps) {
 
   const gallery = post.post.gallery;
   const content = post.post.content;
+  const track = post.post.slug;
 
   return (
     <div className={styles.reactive}>
@@ -48,7 +50,7 @@ export default async function Post({ params: {slug} }: PostProps) {
       <div className={styles.core}>
         <div className={styles.container}>
           <ContextGallery imageData={gallery} fraction />
-          <div className={styles.content}>
+          <div className={classNames(styles.content, styles[`${track}`])}>
             <h1>{post.post.title}</h1>
             <div className={styles.info}
               dangerouslySetInnerHTML={{
