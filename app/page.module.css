@@ -4,15 +4,6 @@
   height: 100%;
 }
 
-.core {
-  flex-grow: 1;
-}
-
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
 .notfound {
   text-align: center;
   width: 65%;
@@ -22,7 +13,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /*padding-bottom: 40vh;*/
   line-height: 1.5;
 }
 
@@ -39,6 +29,7 @@
 .notfound h2 {
   margin: 0 0 20px;
   font-size: 36px;
+  line-height: 1;
 }
 
 .notfound a {

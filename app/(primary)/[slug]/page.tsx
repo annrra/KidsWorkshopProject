@@ -1,7 +1,4 @@
 import styles from "./post.module.css";
-import { Header } from '@/src/components/Header';
-import { SideNav } from '@/src/components/SideNav';
-import { Footer } from '@/src/components/Footer';
 import { ContextGallery } from '@/src/components/ContextGallery';
 import { getPostBySlug } from '@/lib/api';
 import { notFound } from 'next/navigation'
@@ -42,26 +39,15 @@ export default async function Post({ params: {slug} }: PostProps) {
   const track = post.post.slug;
 
   return (
-    <div className={styles.reactive}>
-      <SideNav />
-      <div className={styles.header}>
-        <Header />
-      </div>
-      <div className={styles.core}>
-        <div className={styles.container}>
-          <ContextGallery imageData={gallery} fraction />
-          <div className={classNames(styles.content, styles[`${track}`])}>
-            <h1>{post.post.title}</h1>
-            <div className={styles.info}
-              dangerouslySetInnerHTML={{
-                __html: content,
-              }}
-            />
-          </div>
-        </div>
-      </div>
-      <div className={styles.footer}>
-        <Footer />
+    <div className={styles.container}>
+      <ContextGallery imageData={gallery} fraction />
+      <div className={classNames(styles.content, styles[`${track}`])}>
+        <h1>{post.post.title}</h1>
+        <div className={styles.info}
+          dangerouslySetInnerHTML={{
+            __html: content,
+          }}
+        />
       </div>
     </div>
   );

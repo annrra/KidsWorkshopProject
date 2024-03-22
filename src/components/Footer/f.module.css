@@ -3,13 +3,13 @@
   /*background-color: var(--paint-yellow);*/
   padding: 0;
   color: var(--paint-purple);
-  margin-bottom: 20px;
   /*background: linear-gradient(to right, var(--paint-tangerine) 50%, var(--paint-yellow) 50%);*/
 
   .container {
     background-color: var(--paint-yellow);
     border-radius: var(--block-border-radius);
     padding: 50px;
+    margin-bottom: 20px;
   }
 }
 

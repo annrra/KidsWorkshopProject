@@ -1,5 +1,4 @@
 import styles from "./page.module.css";
-import loadingStyles from "./load.module.css";
 import Image from 'next/image';
 import { metadata } from '@/app/layout';
 
@@ -9,11 +8,11 @@ export default function Loading() {
 
 	return (
 		<div className={styles.reactive}>
-			<div className={loadingStyles['loading-button']}>
+			<div className={styles['loading-button']}>
 				<Image
 					src={button}
 					alt={String(metaTitle)}
-					className={`${loadingStyles.button}`}
+					className={`${styles.button}`}
 					priority
 					width={0}
 					height={0}
