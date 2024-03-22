@@ -45,6 +45,10 @@
   border-radius: 10px;
 }
 
+.prolet h1 {
+  line-height: 1.1;
+}
+
 @media only screen and (max-width: 1000px) {
   .content {
     width: 75%;
