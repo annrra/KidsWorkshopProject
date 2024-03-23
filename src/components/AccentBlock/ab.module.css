@@ -138,11 +138,13 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 1000px) {
   .badge {
     left: -65px;
   }
+}
 
+@media only screen and (max-width: 1000px) {
   .hero {
     padding: 20px 30px;
   }
