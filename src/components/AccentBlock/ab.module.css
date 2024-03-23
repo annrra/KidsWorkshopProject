@@ -32,10 +32,6 @@
   width: 160px;
   height: 160px;
   z-index: 3;
-
-  @media only screen and (min-width: 1000px) {
-    left: -65px;
-  }
 }
 
 .accent-badge-data {
@@ -143,6 +139,10 @@
 }
 
 @media only screen and (max-width: 1000px) {
+  .badge {
+    left: -65px;
+  }
+
   .hero {
     padding: 20px 30px;
   }

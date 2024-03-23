@@ -25,18 +25,6 @@
 	border: 3px solid var(--paint-dark);
 	box-shadow: 3px 0 0 0 #fff, 0 3px 0 0 #fff, -3px 0 0 0 #fff, 0 -3px 0 0 #fff;
 	padding: 0 14px 0 46px;
-
-	@media only screen and (max-width: 1200px) {
-		width: 85%;
-	}
-
-	@media only screen and (max-width: 800px) {
-		width: 95%;
-
-		.input {
-			width: inherit;
-		}
-	}
 }
 
 .form {
@@ -92,7 +80,21 @@
 	min-height: 20px;
 }
 
+@media only screen and (max-width: 1200px) {
+	.form-wrap {
+		width: 85%;
+	}
+}
+
 @media only screen and (max-width: 800px) {
+	.form-wrap {
+		width: 95%;
+	}
+
+	.input {
+		width: inherit;
+	}
+
 	.nl {
 		margin-bottom: 52px;
 	}

@@ -20,13 +20,15 @@
 .logo-figure {
   width: 400px;
   height: auto;
-
-  @media only screen and (max-width: 600px) {
-    max-width: 320px;
-  }
 }
 
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo-figure {
+    max-width: 320px;
+  }
 }

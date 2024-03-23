@@ -18,11 +18,9 @@
 	transition: all 0.3s ease-in-out;
 }
 
-.hide[data-nav="idle"] {
-	.nav-toggle {
-		opacity: 0;
-		pointer-events: none;
-	}
+.hide[data-nav="idle"] .nav-toggle {
+	opacity: 0;
+	pointer-events: none;
 }
 
 .toggle {
@@ -92,25 +90,25 @@
 		height: 60px;
 		top: 10px;
 		right: 10px;
+	}
 
-		.toggle {
-			display: none;
-		}
+	.toggle {
+		display: none;
+	}
 
-		.beam {
-			top: 58%;
-			right: 26%;
-			width: 33px;
-			height: 22px;
+	.beam {
+		top: 58%;
+		right: 26%;
+		width: 33px;
+		height: 22px;
+	}
 
-			.dash {
-				width: 23px;
-			}
+	.dash {
+		width: 23px;
+	}
 
-			.smile {
-				width: 30px;
-			}
-		}
+	.smile {
+		width: 30px;
 	}
 
 	.sidenav[data-nav="active"] .dash {
