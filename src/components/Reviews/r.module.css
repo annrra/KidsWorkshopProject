@@ -13,10 +13,10 @@
 
 .loading {
 	position: relative;
+}
 
-	.refresh::before {
-		animation: rotate 0.5s infinite ease-out;
-	}
+.loading .refresh::before {
+	animation: rotate 0.5s infinite ease-out;
 }
 
 .reviews-heading {
