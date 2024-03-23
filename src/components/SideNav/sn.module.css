@@ -52,27 +52,28 @@
 	right: 11%;
 	z-index: 45;
 	transform: translateY(-50%);
+}
 
-	.dash {
-		display: block;
-		width: 39px;
-		height: 2px;
-		background-color: var(--foreground-invert-color);
-		transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
-	.smile {
-		display: block;
-		width: 31px;
-		height: 2px;
-		background-color: var(--foreground-invert-color);
-		transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		position: absolute;
-		top: 10px;
-		right: 0;
-	}
+.dash {
+	display: block;
+	width: 39px;
+	height: 2px;
+	background-color: var(--foreground-invert-color);
+	transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.smile {
+	display: block;
+	width: 31px;
+	height: 2px;
+	background-color: var(--foreground-invert-color);
+	transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	position: absolute;
+	top: 10px;
+	right: 0;
 }
 
 .sidenav[data-nav="active"] .dash {
@@ -169,12 +170,12 @@
 
 .menu {
 	padding-top: 15vh;
+}
 
-	.menu-list {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
+.menu-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .menu-item {

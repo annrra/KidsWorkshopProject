@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ],
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.80",
     "classnames": "^2.5.1",

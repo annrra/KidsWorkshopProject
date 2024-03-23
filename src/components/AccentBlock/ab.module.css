@@ -16,59 +16,59 @@
 
 .flex {
   display: flex;
+}
 
-  &.cl2 {
-    height: 100%;
-  }
+.flex.cl2 {
+  height: 100%;
 }
 
 .figure {
   position: relative;
   flex: 0 0 40%;
+}
 
-  .badge {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    z-index: 3;
+.badge {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  z-index: 3;
 
-    @media only screen and (min-width: 1000px) {
-      left: -65px;
-    }
-
-    .accent-badge-data {
-      font-weight: bold;
-      display: inline-flex;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      z-index: 7;
-      text-align: center;
-      padding: 30px;
-      line-height: 1.1;
-      justify-content: center;
-    }
-
-    .accent-badge-data svg {
-      max-width: 85px;
-      transition: transform 0.3s ease;
-      transform: rotate(-45deg);
-    }
+  @media only screen and (min-width: 1000px) {
+    left: -65px;
   }
+}
 
-  .bloom {
-    fill: var(--foreground-invert-color);
-  }
+.accent-badge-data {
+  font-weight: bold;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 7;
+  text-align: center;
+  padding: 30px;
+  line-height: 1.1;
+  justify-content: center;
+}
 
-  .badge-stamp {
-    width: 160px;
-    height: 160px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 5;
-    transition: transform 0.3s ease;
-  }
+.accent-badge-data svg {
+  max-width: 85px;
+  transition: transform 0.3s ease;
+  transform: rotate(-45deg);
+}
+
+.bloom {
+  fill: var(--foreground-invert-color);
+}
+
+.badge-stamp {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  transition: transform 0.3s ease;
 }
 
 .badge:hover .badge-stamp {
@@ -87,36 +87,33 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
 
-  .title,
-  .subtitle {
-    display: inline-block;
-    border-radius: 2px;
-    padding: 0px 15px 5px;
-    white-space: nowrap;
-
-    .headline {
-      margin: 0;
-      text-transform: lowercase;
-      font-size: 36px;
-    }
-  }
-
-  .title {
-    background-color: var(--paint-purple);
-    transform: rotate(-4deg);
-  }
-
-  .subtitle {
-    background-color: var(--paint-dark);
-    position: relative;
-    left: 45px;
-    margin: 20px 0;
-  }
+.title,
+.subtitle {
+  display: inline-block;
+  border-radius: 2px;
+  padding: 0px 15px 5px;
+  white-space: nowrap;
 }
 
 .headline {
+  margin: 0;
+  text-transform: lowercase;
+  font-size: 36px;
   line-height: 1;
+}
+
+.title {
+  background-color: var(--paint-purple);
+  transform: rotate(-4deg);
+}
+
+.subtitle {
+  background-color: var(--paint-dark);
+  position: relative;
+  left: 45px;
+  margin: 20px 0;
 }
 
 .accent-link {
@@ -160,13 +157,8 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .story {
-    .title,
-    .subtitle {
-      .headline {
-        font-size: 30px;
-      }
-    }
+  .headline {
+    font-size: 30px;
   }
 }
 
@@ -178,15 +170,15 @@
 
   .hero .flex {
     flex-direction: column;
+  }
 
-    .figure {
-      margin: 0 0 20px;
-    }
+  .figure {
+    margin: 0 0 20px;
+  }
 
-    .story {
-      text-align: center;
-      padding-top: 0;
-    }
+  .story {
+    text-align: center;
+    padding-top: 0;
   }
 }
 
@@ -198,38 +190,31 @@
 
   .story {
     padding-left: 0;
-
-    .title,
-    .subtitle {
-      .headline {
-        font-size: 26px;
-      }
-    }
   }
 
-  .figure {
-    .badge {
-      width: 130px;
-      height: 130px;
+  .headline {
+    font-size: 26px;
+  }
 
-      .accent-badge-data {
-        padding: 10px;
-        font-size: 90%;
-      }
-    }
-  
-    .badge-stamp {
-      width: 130px;
-      height: 130px;
-    }
+  .badge {
+    width: 130px;
+    height: 130px;
+  }
+
+  .accent-badge-data {
+    padding: 10px;
+    font-size: 90%;
+  }
+
+  .badge-stamp {
+    width: 130px;
+    height: 130px;
   }
 }
 
 @media only screen and (max-width: 500px) {
-  .story {
-    .subtitle {
-      left: 30px;
-    }
+  .subtitle {
+    left: 30px;
   }
 }
 
@@ -239,12 +224,7 @@
     padding-right: 5px;
   }
 
-  .story {
-    .title,
-    .subtitle {
-      .headline {
-        font-size: 24px;
-      }
-    }
+  .headline {
+    font-size: 24px;
   }
 }
