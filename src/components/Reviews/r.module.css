@@ -109,6 +109,51 @@
 	border-radius: 50%;
 }
 
+.avatar {
+	position: relative;
+	z-index: 1;
+}
+
+.avatar:hover .alias {
+	opacity: 1;
+	visibility: visible;
+}
+
+.alias {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	top: -10%;
+	left: 60%;
+	z-index: 5;
+	background-color: var(--paint-yellow);
+	color: var(--foreground-color);
+	border-radius: 5px;
+	padding: 5px 20px;
+	white-space: nowrap;
+	font-size: 90%;
+	transition: all 0.5s ease;
+}
+
+.alias::before,
+.alias::after {
+	content: '';
+	background-color: var(--paint-yellow);
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transform: translate(-120%, 100%);
+}
+
+.alias::after {
+	width: 10px;
+	height: 10px;
+	transform: translate(-250%, 290%);
+}
+
 .refresh {
 	display: block;
 	width: 40px;

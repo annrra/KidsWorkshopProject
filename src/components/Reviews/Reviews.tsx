@@ -94,9 +94,12 @@ const Reviews: React.FC = () => {
           ))
         ) : (
           mixReviews.map((review: ReviewProps, index: number) => {
+            console.log('---' + JSON.stringify(review.title));
+            
             return (
               <div className={classNames(styles.review, styles[`review-${index}`])} key={index}>
                 <div className={styles.avatar}>
+                  <div className={styles.alias}>{review.title}</div>
                   {review.featuredImage?.node?.sourceUrl && (
                     <Image
                       src={review.featuredImage.node.sourceUrl}
