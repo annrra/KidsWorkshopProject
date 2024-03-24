@@ -33,15 +33,26 @@ const shuffleItems = (array: any[]) => {
   return newArray;
 };
 
+const LoadingReview = () => {
+  return (
+    <div className={styles.review}>
+      <div className={styles['skeleton-avatar']}></div>
+      <div className={styles['skeleton-story']}>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  );
+}
+
 const Reviews: React.FC = () => {
   const [category, setCategory] = useState<CategoryNode[]>([]);
   const [reviews, setReviews] = useState<ReviewProps[]>([]);
   const [mixReviews, setMixReviews] = useState<ReviewProps[]>([]);
-  const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(true);
 
   const fetchData = async () => {
     try {
-      setRefresh(true);
       const categoryData = await getReviewsCategory();
       const category = categoryData.categories.nodes;
       const reviewsData = await getReviewsNotes();
@@ -51,7 +62,6 @@ const Reviews: React.FC = () => {
       setCategory(category);
       setReviews(reviews);
       setMixReviews(mixReviews);
-      setRefresh(true);
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
@@ -78,31 +88,36 @@ const Reviews: React.FC = () => {
     <section className={classNames(styles.reviews, { [styles.loading]: refresh })}>
       <h2 className={styles['reviews-heading']}>{category && category.length > 0 ? category[0].description : 'Ето какво споделиха за нас:'}</h2>
       <div className={styles['reviews-wrap']}>
-        {mixReviews.map((review: ReviewProps, index: number) => {
-
-          return (
-            <div className={classNames(styles.review, styles[`review-${index}`])} key={index}>
-              <div className={styles.avatar}>
-                {review.featuredImage?.node?.sourceUrl && (
-                  <Image
-                    src={review.featuredImage.node.sourceUrl}
-                    alt={review.excerpt || ''}
-                    className={styles['avatar-image']}
-                    priority
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                  />
-                )}
+        {(mixReviews.length === 0 || refresh) ? (
+          Array.from({ length: 2 }).map((_, index) => (
+            <LoadingReview key={index} />
+          ))
+        ) : (
+          mixReviews.map((review: ReviewProps, index: number) => {
+            return (
+              <div className={classNames(styles.review, styles[`review-${index}`])} key={index}>
+                <div className={styles.avatar}>
+                  {review.featuredImage?.node?.sourceUrl && (
+                    <Image
+                      src={review.featuredImage.node.sourceUrl}
+                      alt={review.excerpt || ''}
+                      className={styles['avatar-image']}
+                      priority
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                    />
+                  )}
+                </div>
+                <div className={styles.story}
+                  dangerouslySetInnerHTML={{
+                    __html: review.content,
+                  }}
+                />
               </div>
-              <div className={styles.story}
-                dangerouslySetInnerHTML={{
-                  __html: review.content,
-                }}
-              />
-            </div>
-          );
-        })}
+            );
+          })
+        )}
         <button className={styles.refresh} onClick={handleRefresh}></button>
       </div>
     </section>
