@@ -119,6 +119,12 @@
 	visibility: visible;
 }
 
+.avatar:hover .alias::before,
+.avatar:hover .alias::after {
+	opacity: 1;
+	visibility: visible;
+}
+
 .alias {
 	opacity: 0;
 	visibility: hidden;
@@ -133,10 +139,13 @@
 	white-space: nowrap;
 	font-size: 90%;
 	transition: all 0.5s ease;
+	transition-delay: 10ms;
 }
 
 .alias::before,
 .alias::after {
+	opacity: 0;
+	visibility: hidden;
 	content: '';
 	background-color: var(--paint-yellow);
 	width: 14px;
@@ -146,12 +155,15 @@
 	bottom: 0;
 	left: 0;
 	transform: translate(-120%, 100%);
+	transition: all 0.5s ease;
+	transition-delay: 150ms;
 }
 
 .alias::after {
 	width: 10px;
 	height: 10px;
 	transform: translate(-250%, 290%);
+	transition-delay: 300ms;
 }
 
 .refresh {
