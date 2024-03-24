@@ -328,6 +328,7 @@ export async function getPostBySlug(slug: string) {
   const res = await fetch(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
+    next: { tags: ['collection'] },
     body: JSON.stringify({
       query:`{
         post(id: "${slug}", idType: URI) {

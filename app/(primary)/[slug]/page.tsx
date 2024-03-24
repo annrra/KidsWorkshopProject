@@ -1,7 +1,7 @@
 import styles from "./post.module.css";
 import { ContextGallery } from '@/src/components/ContextGallery';
 import { getPostBySlug } from '@/lib/api';
-import { notFound } from 'next/navigation'
+import { notFound } from 'next/navigation';
 import classNames from "classnames";
 
 type PostProps = {
