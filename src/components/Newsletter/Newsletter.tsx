@@ -82,6 +82,13 @@ const Newsletter: React.FC = () => {
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+    if (errorMessage) {
+      setErrorMessage('');
+    }
+  };
+
   return (
     <section className={styles.nl}>
       <h2 className={styles.heading}>{title}</h2>
@@ -90,11 +97,11 @@ const Newsletter: React.FC = () => {
           __html: content,
         }}
       />
-      <div className={styles['form-wrap']}>
+      <div className={classNames(styles['form-wrap'], { [styles.error]: errorMessage !== '' })}>
         <form className={classNames(styles.form, { [styles.active]: active })} onSubmit={handleSubmit}>
           <input
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={handleChange}
             className={styles.input}
             type="email"
             placeholder='email...'

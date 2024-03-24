@@ -36,7 +36,7 @@
 .input {
 	flex: 1;
 	height: 80%;
-	font-size: 26px;
+	font-size: 24px;
 	border: 0;
 	outline: none;
 	padding-right: 30px;
@@ -55,6 +55,11 @@
 	background-position: 46% 51%;
 	font-size: 0;
 	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.form-wrap.error .submit {
+	background-color: var(--paint-red);
 }
 
 @keyframes rotate {
