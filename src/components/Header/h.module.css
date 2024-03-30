@@ -11,12 +11,6 @@
   display: inline-block;
 }
 
-.logo {
-  text-transform: uppercase;
-  font-weight: 600;
-  font-family: var(--font-raleway);
-}
-
 .logo-figure {
   width: 400px;
   height: auto;
@@ -25,6 +19,34 @@
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
+}
+
+@keyframes blinkAnimation {
+  0% {
+    fill: transparent;
+  }
+  1% {
+    fill: var(--paint-green);
+  }
+  2% {
+    fill: transparent;
+  }
+  100% {
+    fill: transparent;
+  }
+}
+
+.eye {
+  position: relative;
+}
+
+.blink {
+  animation-name: blinkAnimation;
+  animation-duration: 6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transition: all 0.2s ease-in-out;
+  fill: transparent;
 }
 
 @media only screen and (max-width: 600px) {

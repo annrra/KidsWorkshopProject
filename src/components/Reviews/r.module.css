@@ -216,6 +216,23 @@
 		margin-left: 20px;
 		margin-right: 0;
 	}
+
+	.reviews-wrap .review:last-of-type .alias {
+		right: 60%;
+		left: unset;
+	}
+	
+	.reviews-wrap .review:last-of-type .alias::before,
+	.reviews-wrap .review:last-of-type .alias::after {
+		bottom: 0;
+		right: 0;
+		left: unset;
+		transform: translate(120%, 100%);
+	}
+	
+	.reviews-wrap .review:last-of-type .alias::after {
+		transform: translate(250%, 290%);
+	}
 }
 
 @media only screen and (max-width: 800px) {
