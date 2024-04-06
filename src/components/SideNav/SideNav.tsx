@@ -96,7 +96,12 @@ const SideNav: React.FC = () => {
       data-nav={navState ? 'active' : 'idle'}
     >
       <button className={styles['nav-toggle']} onClick={handleNav}>
-        <svg className={styles.toggle} width="166" height="166" viewBox="0 0 166 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className={styles.toggle}
+          viewBox="0 0 166 166"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <motion.path
             className={styles['toggle-path']}
             d="M-0.5 -0.5C54.8333 -0.5 110.167 -0.5 165.5 -0.5C165.5 54.8333 165.5 110.167 165.5 165.5C164.833 165.5 164.167 165.5 163.5 165.5C131 158 132.5 134 112 129.5C91.5 125 80.5 138.5 63.5 131.833C46.5 125.167 69.5 96 61.5 79.5C53.5 63 26.614 79.7023 18.0519 65C12.6181 55.6695 19 36 19 27.5C19 19 9.73667 8.89435 1.5 2C0.905578 1.53566 0.238911 1.36899 -0.5 1.5C-0.5 0.833333 -0.5 0.166667 -0.5 -0.5Z"

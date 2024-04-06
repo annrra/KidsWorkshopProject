@@ -25,10 +25,13 @@
   0% {
     fill: transparent;
   }
-  1% {
+  50% {
+    fill: transparent;
+  }
+  51% {
     fill: var(--paint-green);
   }
-  2% {
+  52% {
     fill: transparent;
   }
   100% {
