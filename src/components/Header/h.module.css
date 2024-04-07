@@ -45,7 +45,7 @@
 
 .blink {
   animation-name: blinkAnimation;
-  animation-duration: 6s;
+  animation-duration: 5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   transition: all 0.2s ease-in-out;
