@@ -4,6 +4,7 @@ import styles from './r.module.css';
 import { getReviewsCategory, getReviewsNotes } from '@/lib/api';
 import classNames from 'classnames';
 import Image from 'next/image';
+import { Modal } from '@/src/components/_utils/Modal';
  
 type ReviewProps = {
   title: string;
@@ -15,6 +16,9 @@ type ReviewProps = {
       uri: string;
     };
   };
+  reviews?: {
+    subheading: string;
+  }
 };
 
 type CategoryNode = {
@@ -50,6 +54,8 @@ const Reviews: React.FC = () => {
   const [reviews, setReviews] = useState<ReviewProps[]>([]);
   const [mixReviews, setMixReviews] = useState<ReviewProps[]>([]);
   const [refresh, setRefresh] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedReviewIndex, setSelectedReviewIndex] = useState<number | null>(null);
 
   const fetchData = async () => {
     try {
@@ -84,6 +90,11 @@ const Reviews: React.FC = () => {
     setRefresh(false);
   };
 
+  const showModal = (index: number) => {
+    setSelectedReviewIndex(index);
+    setIsModalOpen(true);
+  };
+
   return (
     <section className={classNames(styles.reviews, { [styles.loading]: refresh })}>
       <h2 className={styles['reviews-heading']}>{category && category.length > 0 ? category[0].description : 'Ето какво споделиха за нас:'}</h2>
@@ -102,12 +113,13 @@ const Reviews: React.FC = () => {
                   {review.featuredImage?.node?.sourceUrl && (
                     <Image
                       src={review.featuredImage.node.sourceUrl}
-                      alt={review.excerpt || ''}
+                      alt={review.title || ''}
                       className={styles['avatar-image']}
                       priority
                       width={0}
                       height={0}
                       sizes="100vw"
+                      onClick={() => showModal(index)}
                     />
                   )}
                 </div>
@@ -116,6 +128,30 @@ const Reviews: React.FC = () => {
                     __html: review.content,
                   }}
                 />
+                <Modal open={isModalOpen && selectedReviewIndex === index} onClose={() => setIsModalOpen(false)}>
+                  <div className={styles.modal}>
+                    <div className={styles['modal-story']}
+                      dangerouslySetInnerHTML={{
+                        __html: review.content,
+                      }}
+                    />
+                    {review.featuredImage?.node?.sourceUrl && (
+                      <Image
+                        src={review.featuredImage.node.sourceUrl}
+                        alt={review.title || ''}
+                        className={styles['avatar-image']}
+                        priority
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                      />
+                    )}
+                    <div className={styles.name}>{review.title}</div>
+                    {review.reviews?.subheading && (
+                      <div className={styles.subheading}>{review.reviews.subheading}</div>
+                    )}
+                  </div>
+                </Modal>
               </div>
             );
           })

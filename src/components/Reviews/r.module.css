@@ -107,6 +107,7 @@
 	object-fit: cover;
 	margin-right: 23px;
 	border-radius: 50%;
+	cursor: pointer;
 }
 
 .avatar {
@@ -166,6 +167,14 @@
 	transition-delay: 300ms;
 }
 
+.story p {
+	display: -webkit-box; 
+	-webkit-box-orient: vertical; 
+	-webkit-line-clamp: 3; 
+	overflow: hidden; 
+	text-overflow: ellipsis;
+}
+
 .refresh {
 	display: block;
 	width: 40px;
@@ -198,6 +207,29 @@
 
 .refresh:hover::before {
 	transform: rotate(360deg);
+}
+
+.modal {
+	text-align: center;
+	font-size: 110%;
+	padding: 0 30px;
+}
+
+.modal .avatar-image {
+	margin: 30px 0 15px;
+	cursor: default;
+}
+
+.modal-story {
+	line-height: 135%;
+}
+
+.modal .name {
+	font-weight: bold;
+}
+
+.modal .subheading {
+	margin-top: 3px;
 }
 
 @media only screen and (max-width: 1000px) {

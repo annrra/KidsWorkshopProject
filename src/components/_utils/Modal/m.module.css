@@ -1,0 +1,88 @@
+.modal {
+	position: relative;
+	display: none;
+	z-index: 50;
+}
+
+.modal.is-open {
+	display: block;
+}
+
+.overlay {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 61;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.modal .pop {
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}
+
+.modal.is-open .pop {
+	opacity: 1;
+}
+
+.pop {
+	position: absolute;
+	z-index: 65;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 610px;
+	height: auto;
+	background-color: var(--paint-tangerine);
+	border-radius: var(--block-border-radius);
+	padding: 60px;
+}
+
+.close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	display: inline-flex;
+	background-color: var(--paint-red);
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.close::before,
+.close::after {
+  position: absolute;
+  left: 19px;
+  content: ' ';
+  height: 16px;
+  width: 2px;
+  background-color: var(--foreground-invert-color);
+}
+
+.close::before {
+  transform: rotate(45deg);
+}
+
+.close::after {
+  transform: rotate(-45deg);
+}
+
+@media only screen and (max-width: 1000px) {
+	.pop {
+		width: 80%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.pop {
+		width: 85%;
+		padding: 60px 20px 40px;
+	}
+}

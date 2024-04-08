@@ -34,8 +34,8 @@ const SharenotoSvg = (props: SVGMotionProps<SVGSVGElement>) => (
     viewBox="0 0 658 169"
     fill="none"
     initial="off"
-		animate="off"
-		whileHover="on"
+    animate="off"
+    whileHover="on"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
@@ -49,7 +49,7 @@ const SharenotoSvg = (props: SVGMotionProps<SVGSVGElement>) => (
         <path
           id="tile1"
           d="M89.54 107.338L128.247 31.3942L167.322 107.338H142.406V91.9029C142.406 84.0832 136.067 77.744 128.247 77.744C120.428 77.744 115 84 114.088 91.9029V107.338H89.54Z"
-          fill="#069147"
+          fill="#f20101"
         />
         <path
           id="tile2"

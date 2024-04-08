@@ -128,20 +128,23 @@ export async function getReviewsNotes() {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       query:`{
-				posts(where: {status: PUBLISH, categoryName: "salute"}) {
-					nodes {
-						title
-						content
-						excerpt
-						featuredImage {
-							node {
-								sourceUrl
-								uri
-							}
-						}
-					}
-				}
-			}`
+        posts(where: {status: PUBLISH, categoryName: "salute"}) {
+          nodes {
+            title
+            content
+            excerpt
+            featuredImage {
+              node {
+                sourceUrl
+                uri
+              }
+            }
+            reviews {
+              subheading
+            }
+          }
+        }
+      }`
     }),
   });
    
