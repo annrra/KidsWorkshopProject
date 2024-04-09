@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({
       <div className={styles.overlay}>
         <div className={styles.pop}>
           <div className={styles.close} onClick={handleClose}></div>
-          {children}
+          <div className={styles.content}>{children}</div>
         </div>
       </div>
     </div>
