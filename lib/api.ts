@@ -393,3 +393,42 @@ export async function getPostBySlug(slug: string) {
   const json = await res.json();
   return json.data;
 }
+
+export async function getContactContent() {
+	if (!API_URL) {
+    console.error('API_URL is not defined.');
+    return;
+  }
+
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    cache: 'no-store',
+    body: JSON.stringify({
+      query:`{
+        pageBy(uri: "contact") {
+          title
+          content
+          slug
+          uri
+          featuredImage {
+            node {
+              sourceUrl
+              srcSet
+              uri
+            }
+          }
+        }
+      }`
+    }),
+  });
+   
+  // Handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+
+  const json = await res.json();
+  return json.data;
+}

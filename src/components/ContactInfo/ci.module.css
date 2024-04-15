@@ -1,0 +1,28 @@
+.contact {
+  width: 55%;
+  margin: 65px auto 50px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.contact a {
+  color: var(--paint-purple);
+}
+
+.contact h1 {
+  line-height: 1.1;
+}
+
+@media only screen and (max-width: 1000px) {
+  .contact {
+    width: 70%;
+    margin: 50px auto 40px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .contact {
+    width: 85%;
+    margin: 40px auto 40px;
+  }
+}
