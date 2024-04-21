@@ -34,8 +34,15 @@
 .row textarea {
   width: 100%;
   padding: 20px 20px;
-  border-radius: 20px;
+  border-radius: 6px;
   border: 0px solid  var(--paint-dark);
+}
+
+.row input::placeholder,
+.row textarea::placeholder {
+  text-transform: uppercase;
+  font-size: 90%;
+  color: var(--paint-purple);
 }
 
 .row input:focus,
@@ -57,6 +64,44 @@
   border: 0;
   color: var(--foreground-invert-color);
   cursor: pointer;
+  background-position: center;
+  transition: background 1s;
+}
+
+.contact-form button:hover {
+  background: var(--paint-dark) radial-gradient(circle, transparent 1%, var(--paint-dark) 1%) center/15000%;
+}
+
+.contact-form button:active {
+  background-color: var(--paint-purple);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.message {
+  margin: 0 0 20px;
+  background-color: var(--paint-pale);
+  color: var(--paint-purple);
+  padding: 0 20px;
+  height: 0;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.message.show {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: auto;
+}
+
+.message.success {
+  background-color: var(--paint-green);
+  color: var(--foreground-invert-color);
+}
+
+.message.error {
+  background-color: var(--paint-red);
+  color: var(--foreground-invert-color);
 }
 
 .nevidim {

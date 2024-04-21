@@ -25,6 +25,7 @@ const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -56,10 +57,12 @@ const ContactForm: React.FC = () => {
       }
 
       const responseData = await response.json();
+      setIsError(false);
       setMessage(responseData.message);
       setFormData(initialFormData);
     } catch (err) {
       console.error(err);
+      setIsError(true);
       setMessage('Error, please try resubmitting the form');
     } finally {
       setSubmitting(false);
@@ -70,6 +73,7 @@ const ContactForm: React.FC = () => {
   return (
     <div className={styles['contact-form']}>
       <form onSubmit={handleSubmit} className={classNames({ loading: submitting })}>
+        <div className={classNames(styles.message, {[styles.show]: message, [styles.error]: isError, [styles.success]: !isError})}>{message}</div>
         <div style={{ display: 'none' }}>
           <label htmlFor="webSite">Website</label>
           <input type="text" id="webSite" name="webSite" value={formData.webSite} onChange={handleChange} />
@@ -94,7 +98,6 @@ const ContactForm: React.FC = () => {
         <div className={classNames(styles.row, styles['row-submit'])}>
           <button type="submit">Изпрати</button>
         </div>
-        <div className={styles.message}>{message}</div>
       </form>
     </div>
   );
