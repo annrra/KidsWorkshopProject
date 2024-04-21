@@ -1,4 +1,4 @@
-import styles from "./about.module.css";
+import styles from './about.module.css';
 import { Apropos } from '@/src/components/Apropos';
 import { ContextGallery } from '@/src/components/ContextGallery';
 import { getAboutContent } from '@/lib/api';

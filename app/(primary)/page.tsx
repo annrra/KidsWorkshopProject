@@ -1,8 +1,8 @@
-import styles from "./page.module.css";
+import styles from './page.module.css';
 import { AccentBlock } from '@/src/components/AccentBlock';
-import { PartyCards } from "@/src/components/PartyCards";
-import { Reviews } from "@/src/components/Reviews";
-import { Newsletter } from "@/src/components/Newsletter";
+import { PartyCards } from '@/src/components/PartyCards';
+import { Reviews } from '@/src/components/Reviews';
+import { Newsletter } from '@/src/components/Newsletter';
 
 export default function Home() {
   return (

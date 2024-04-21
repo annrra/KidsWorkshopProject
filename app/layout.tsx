@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-import "normalize.css/normalize.css";
-import "./globals.css";
+import type { Metadata } from 'next';
+import 'normalize.css/normalize.css';
+import './globals.css';
 import localFont from 'next/font/local';
 
 const gilroy = localFont({

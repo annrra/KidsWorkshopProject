@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './cg.module.css';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 type ImageData = {
   [key: string]: {

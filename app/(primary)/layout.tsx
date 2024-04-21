@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import styles from './page.module.css';
 import { Header } from '@/src/components/Header';
 import { SideNav } from '@/src/components/SideNav';
 import { Footer } from '@/src/components/Footer';

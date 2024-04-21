@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './m.module.css';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 type ModalProps = {
   children: string | React.ReactNode;

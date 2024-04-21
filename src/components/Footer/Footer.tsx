@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { metadata } from '@/app/layout';
-import classNames from "classnames";
+import classNames from 'classnames';
 import styles from './f.module.css';
 
 const user = 'ivanova.denitza';

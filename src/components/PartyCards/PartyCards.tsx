@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './pc.module.css';
 import { getPartyCards } from '@/lib/api';
-import { PartyCard, PartyCardProps } from "@/src/components/PartyCard";
+import { PartyCard, PartyCardProps } from '@/src/components/PartyCard';
 import classNames from 'classnames';
 import Link from 'next/link';
 

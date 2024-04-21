@@ -58,3 +58,7 @@
   color: var(--foreground-invert-color);
   cursor: pointer;
 }
+
+.nevidim {
+  display: none;
+}
