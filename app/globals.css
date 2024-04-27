@@ -19,6 +19,39 @@
 
   --tile-start-rgb: 239, 245, 249;
   --tile-end-rgb: 228, 232, 233;
+
+  --mode-bg: #f0eef0;
+  --mode-color: #153254;
+  --mode-color-invert: #153254;
+  --mode-light: #fff;
+  --mode-input-bg: #fff;
+  --mode-input-color: var(--paint-dark);
+  --mode-pale: var(--paint-pale);
+}
+
+.light {
+  --mode-bg: #f0eef0;
+  --mode-color: #153254;
+  --mode-color-invert: #f0eef0;
+  --mode-light: #fff;
+  --mode-input-bg: #fff;
+  --mode-input-color: var(--paint-dark);
+  --mode-pale: var(--paint-pale);
+}
+
+.dark {
+  --mode-bg: #020023;
+  --mode-color: #f0eef0;
+  --mode-color-invert: #153254;
+  --mode-light: var(--paint-dark);
+  --mode-input-bg: rgba(255, 255, 255, 0.15);
+  --mode-input-color: var(--foreground-color-inverted);
+  --mode-pale: rgba(240, 227, 196, 0.2);
+}
+
+.light,
+.dark {
+  min-height: 100vh;
 }
 
 * {
@@ -30,7 +63,6 @@
 html,
 body {
   max-width: 100vw;
-  height: 100%;
   min-height: 100%;
 }
 

@@ -1,7 +1,9 @@
+import styles from './page.module.css';
 import type { Metadata } from 'next';
 import 'normalize.css/normalize.css';
 import './globals.css';
 import localFont from 'next/font/local';
+import { ThemeContextProvider } from '@/src/context';
 
 const gilroy = localFont({
   src: [
@@ -32,7 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={gilroy.variable}>
-        {children}
+        <ThemeContextProvider>
+          <div className={styles.mode}>{children}</div>
+        </ThemeContextProvider>
       </body>
     </html>
   );

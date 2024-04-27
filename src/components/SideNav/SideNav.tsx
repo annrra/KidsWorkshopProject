@@ -5,6 +5,7 @@ import styles from './sn.module.css';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { getPrimaryMenu } from '@/lib/api';
+import { ToggleTheme } from '@/src/components/ToggleTheme';
 
 type MenuProps = {
   label: string;
@@ -95,6 +96,7 @@ const SideNav: React.FC = () => {
       })}
       data-nav={navState ? 'active' : 'idle'}
     >
+      <ToggleTheme />
       <button className={styles['nav-toggle']} onClick={handleNav}>
         <svg
           className={styles.toggle}

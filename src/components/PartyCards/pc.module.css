@@ -66,7 +66,7 @@
 	font-size: 46px;
 	font-weight: 400;
 	line-height: 1.1;
-	color: var(--paint-dark);
+	color: var(--mode-color);
 	transition: transform 0.3s ease;
 }
 
@@ -74,7 +74,7 @@
 	content: '';
 	width: 70px;
 	height: 70px;
-	background-color: var(--background-color);
+	background-color: var(--mode-bg);
 	border-radius: 50%;
 	position: absolute;
 	top: 0;

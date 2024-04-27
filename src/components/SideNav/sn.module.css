@@ -23,6 +23,16 @@
 	pointer-events: none;
 }
 
+.sidenav [data-toggle="toggle"] {
+	opacity: 1;
+	transition: all 0.3s ease-in-out;
+	transition-delay: 150ms;
+}
+
+.hide [data-toggle="toggle"] {
+	opacity: 0;
+}
+
 .toggle {
 	position: relative;
 	top: -30px;
@@ -133,10 +143,8 @@
 	z-index: 35;
 	width: 100%;
 	height: 100%;
-	background-color: var(--paint-dark);
-	color: var(--foreground-invert-color);
-	background-color: var(--foreground-invert-color);
-	color: var(--paint-dark);
+	background-color: var(--mode-bg);
+	color: var(--mode-color);
 	overflow: hidden;
 	-webkit-transform: translateX(100vw);
 	-moz-transform: translateX(100vw);
@@ -248,7 +256,7 @@
 	bottom: 0;
 	left: 0;
 	inset: 0 0 0 0;
-	background: var(--paint-white);
+	background: var(--mode-pale);
 	opacity: 0.3;
 	z-index: -1;
 	transition: transform 0.4s ease;
