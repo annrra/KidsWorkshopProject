@@ -268,7 +268,7 @@
 }
 
 .menu-list li a:hover h3 {
-	color: var(--paint-purple);
+	color: var(--mode-link);
 }
 
 .menu-list h3 {
@@ -306,7 +306,7 @@
 }
 
 .fpath {
-	fill: var(--paint-purple);
+	fill: var(--mode-link);
 }
 
 @media only screen and (max-width: 1000px) {
