@@ -25,7 +25,7 @@
 }
 
 .reviews-wrap {
-	background-color: var(--paint-green);
+	background-color: var(--mode-pale);
 	border-radius: var(--block-border-radius);
 	padding: 60px 70px;
 	min-height: 225px;
@@ -39,7 +39,7 @@
 .review {
 	display: flex;
 	align-items: center;
-	color: var(--foreground-invert-color);
+	color: var(--mode-color);
 }
 
 .skeleton-review {
@@ -213,6 +213,7 @@
 	text-align: center;
 	font-size: 110%;
 	padding: 0 32px;
+	color: var(--foreground-invert-color);
 }
 
 .modal .avatar-image {

@@ -44,7 +44,7 @@
 .row textarea::placeholder {
   text-transform: uppercase;
   font-size: 90%;
-  color: var(--paint-purple);
+  color: var(--mode-color);
 }
 
 .row input:focus,

@@ -37,12 +37,14 @@
 }
 
 .card-0 {
-	background-color: var(--paint-yellow);
-	color: var(--foreground-color);
+	background-color: var(--mode-pale);
+	color: var(--mode-color);
 }
 
 .card-1 {
 	background-color: var(--paint-dark);
+	background-color: var(--paint-tangerine);
+	color: var(--mode-color);
 }
 
 .card-2 {
