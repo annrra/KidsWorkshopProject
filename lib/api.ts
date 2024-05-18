@@ -432,3 +432,90 @@ export async function getContactContent() {
   const json = await res.json();
   return json.data;
 }
+
+export async function getPartyBySlug(slug: string) {
+	if (!API_URL) {
+    console.error('API_URL is not defined.');
+    return;
+  }
+
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    cache: 'no-store',
+    body: JSON.stringify({
+      query:`{
+        post(id: "${slug}", idType: URI) {
+          title
+          excerpt
+          content
+          slug
+          status
+          categories(where: {name: "party"}) {
+            nodes {
+              name
+              slug
+            }
+          }
+          featuredImage {
+            node {
+              sourceUrl
+              srcSet
+              uri
+            }
+          }
+          partycontent {
+            partyContentMainTitle
+            partyContentMainInfo
+            partyContentPrimaryImage {
+              node {
+                sourceUrl
+              }
+            }
+            partyContentPrimaryIcon {
+              node {
+                sourceUrl
+              }
+            }
+            partyContentPrimaryActionText
+            partyContentPrimaryActionUrl
+            partyContentSectionSubtitle
+            partyContentSectionInfo
+            partyContentSectionImage {
+              node {
+                sourceUrl
+              }
+            }
+            partyContentSectionIcon {
+              node {
+                sourceUrl
+              }
+            }
+            partyContentOutroSubtitle
+            partyContentOutroInfo
+            partyContentOutroImage {
+              node {
+                sourceUrl
+              }
+            }
+            partyContentOutroIcon {
+              node {
+                sourceUrl
+              }
+            }
+            partyContentClosure
+          }
+        }
+      }`
+    }),
+  });
+   
+  // Handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+
+  const json = await res.json();
+  return json.data;
+}

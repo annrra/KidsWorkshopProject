@@ -41,7 +41,7 @@
 }
 
 .notfound a {
-  color: var(--paint-purple);
+  color: var(--mode-link);
 }
 
 @keyframes blink {

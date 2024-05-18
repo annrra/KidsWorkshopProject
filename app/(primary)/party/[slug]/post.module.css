@@ -1,0 +1,12 @@
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1000px) {
+  
+}
+
+@media only screen and (max-width: 600px) {
+  
+}
