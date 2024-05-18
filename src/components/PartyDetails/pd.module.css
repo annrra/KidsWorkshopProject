@@ -8,3 +8,17 @@
 	text-align: center;
 	padding: 40px 0;
 }
+
+@media only screen and (max-width: 800px) {
+	.data-info {
+		font-size: 16px;
+		line-height: 1.5;
+		padding: 20px 30px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.data-info {
+		padding: 20px 20px;
+	}
+}

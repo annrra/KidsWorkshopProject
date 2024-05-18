@@ -74,4 +74,48 @@
 	font-weight: bold;
 	border-radius: 100px;
 	white-space: nowrap;
+	text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {
+	.hero {
+		padding: 48px 52px;
+	}
+
+	.data {
+		padding: 0 20px 0 25px;
+	}
+
+	.figure {
+		width: 354px;
+		height: 354px;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.figure {
+		width: 294px;
+		height: 294px;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.hero-grid {
+		flex-direction: column;
+	}
+
+	.data {
+		text-align: center;
+		margin-top: 30px;
+	}
+
+	.hero {
+		padding: 48px 32px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.action-link {
+		width: 100%;
+	}
 }

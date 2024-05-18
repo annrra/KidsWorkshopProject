@@ -23,6 +23,7 @@
 	background-color: var(--mode-pale);
 	color: var(--mode-color);
 	padding: 110px 110px 120px 80px;
+	position: relative;
 }
 
 .invert .data {
@@ -34,11 +35,15 @@
 	font-size: 30px;
 	line-height: 1.2;
 	margin-bottom: 30px;
+	position: relative;
+	z-index: 7;
 }
 
 .data-info {
 	line-height: 1.4;
 	font-size: 18px;
+	position: relative;
+	z-index: 7;
 }
 
 .data-info p {
@@ -47,6 +52,25 @@
 
 .data-info p:last-of-type {
 	margin-bottom: 0;
+}
+
+.icon-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 50px;
+	right: 50px;
+	z-index: 5;
+	width: 90px;
+	height: 90px;
+	background-color: var(--paint-tangerine);
+	border-radius: 50%;
+}
+
+.icon {
+	width: 90px;
+  height: 90px;
 }
 
 .figure-wrap {
@@ -69,11 +93,31 @@
 	object-fit: cover;
 }
 
+@media only screen and (max-width: 1200px) {
+	.data {
+		padding: 80px 80px 90px 50px;
+	}
+}
+
 @media only screen and (max-width: 1000px) {
 	.embody {
 		grid-template-columns: repeat(1, 1fr);
-		grid-template-rows: repeat(2, 1fr);
-		grid-column-gap: 25px;
-		grid-row-gap: 25px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.data {
+		padding: 50px 50px 60px 50px;
+	}
+
+	.icon-wrap {
+		top: 20px;
+		right: 20px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.data {
+		padding: 50px 40px 50px 30px;
 	}
 }

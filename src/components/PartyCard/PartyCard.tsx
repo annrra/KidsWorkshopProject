@@ -34,8 +34,10 @@ const PartyCard = async ({ title, uri, excerpt, image, icon }: PartyCardProps) =
     [styles['plain']]: !icon && !image,
   });
 
+  const href = `/party${uri}`;
+
   return (
-    <Link href={uri} className={styles.link}>
+    <Link href={href} className={styles.link}>
       <div className={classNames(styles.card, mediaTag)}>
         <div className={styles.gist}>
           <h2 className={styles.heading}>{title}</h2>
