@@ -520,3 +520,49 @@ export async function getPartyBySlug(slug: string) {
   const json = await res.json();
   return json.data;
 }
+
+export async function getEvents() {
+	if (!API_URL) {
+    console.error('API_URL is not defined.');
+    return;
+  }
+
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      query:`{
+        posts(where: {status: PUBLISH, categoryName: "events"}) {
+          nodes {
+            title
+            slug
+            excerpt
+            content
+            uri
+            featuredImage {
+              node {
+                sourceUrl
+                srcSet
+                uri
+              }
+            }
+            events {
+              eventStatus
+              eventWhen
+              eventWhere
+            }
+          }
+        }
+      }`
+    }),
+  });
+   
+  // Handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+
+  const json = await res.json();
+  return json.data;
+}

@@ -34,6 +34,11 @@
 	background-color: var(--paint-purple);
 	border-radius: var(--block-border-radius);
 	color: var(--foreground-invert-color);
+	transition: all linear .2s;
+}
+
+.card:hover {
+	box-shadow: 0 6px 24px 0 rgba(18, 43, 70, .12);
 }
 
 .card-0 {

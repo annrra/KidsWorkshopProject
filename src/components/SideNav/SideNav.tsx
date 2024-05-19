@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import styles from './sn.module.css';
 import classNames from 'classnames';
 import Link from 'next/link';
-import { getPrimaryMenu } from '@/lib/api';
+import Image from 'next/image';
+import { getPrimaryMenu, getEvents } from '@/lib/api';
 import { ToggleTheme } from '@/src/components/ToggleTheme';
+import { SidePopup } from '@/src/components/_utils/SidePopup';
 
 type MenuProps = {
   label: string;
@@ -15,6 +17,30 @@ type MenuProps = {
   uri: string;
 };
 
+type FeaturedImage = {
+  node: {
+    sourceUrl: string;
+    srcSet: string;
+    uri: string;
+  };
+};
+
+type EventDetails = {
+  eventStatus: boolean;
+  eventWhen: string;
+  eventWhere: string;
+};
+
+type EventProps = {
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  uri: string;
+  featuredImage: FeaturedImage;
+  events: EventDetails;
+}
+
 const SideNav: React.FC = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -23,6 +49,8 @@ const SideNav: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showToggle, setShowToggle] = useState(true);
   const [menu, setMenu] = useState<MenuProps[]>([]);
+  const [events, setEvents] = useState([]);
+  const [sidePopupOpen, setSidePopupOpen] = useState(false);
 
   const blobRange = [
     `M-0.5 -0.5C54.8333 -0.5 110.167 -0.5 165.5 -0.5C165.5 54.8333 165.5 110.167 165.5 165.5C164.833 165.5 164.167 165.5 163.5 165.5C131 158 132.5 134 112 129.5C91.5 125 80.5 138.5 63.5 131.833C46.5 125.167 69.5 96 61.5 79.5C53.5 63 26.614 79.7023 18.0519 65C12.6181 55.6695 19 36 19 27.5C19 19 9.73667 8.89435 1.5 2C0.905578 1.53566 0.238911 1.36899 -0.5 1.5C-0.5 0.833333 -0.5 0.166667 -0.5 -0.5Z`,
@@ -49,8 +77,20 @@ const SideNav: React.FC = () => {
     }
   };
 
+  const fetchEventsData = async () => {
+    try {
+      const eventsData = await getEvents();
+      const eventItems = eventsData.posts.nodes;
+
+      setEvents(eventItems);
+    } catch (error) {
+      console.error('Error fetching events data:', error);
+    }
+  };
+
   useEffect(() => {
     fetchData();
+    fetchEventsData();
   }, []);
 
   useEffect(() => {
@@ -69,11 +109,31 @@ const SideNav: React.FC = () => {
     setTimeout(() => {
       setShift(false);
     }, 300);
+    setSidePopupOpen(false);
   }
+
+  useEffect(() => {
+    if (navState) {
+      document.body.classList.add('nav-open');
+    } else {
+      document.body.classList.remove('nav-open');
+    }
+
+    // Remove class when component unmounts
+    return () => {
+      document.body.classList.remove('nav-open');
+    };
+  }, [navState]);
 
   const idleNav = () => {
     setNavState(false);
-  }
+    setSidePopupOpen(false);
+  };
+
+  const eventsPopup = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    setSidePopupOpen(true);
+  };
 
   const handleScroll = () => {
     const position = window.scrollY;
@@ -97,6 +157,51 @@ const SideNav: React.FC = () => {
       data-nav={navState ? 'active' : 'idle'}
     >
       <ToggleTheme />
+      <SidePopup open={sidePopupOpen} onClose={() => setSidePopupOpen(false)} headline='какво се случва'>
+        <div className={styles.sidepop}>
+          {events.map((event: EventProps, index: number) => {
+            const status = (event.events.eventStatus) ? 'ново' : 'отминало';
+            const href = `${event.uri}`;
+
+            return (
+              <div className={classNames(styles['event-item'], styles[`item-${index}`])} key={index}>
+                <div className={styles.status}>
+                  <div className={classNames(styles['status-label'], {
+                      [styles.new]: event.events.eventStatus
+                    })}
+                  >{status}</div>
+                  {event.events.eventWhen && (
+                    <div className={styles['status-date']}>{event.events.eventWhen}</div>
+                  )}
+                </div>
+                {event.featuredImage.node.sourceUrl && (
+                  <Link href={href} onClick={idleNav} title={event.title}>
+                    <Image
+                      src={ event.featuredImage.node.sourceUrl as string }
+                      alt={event.title}
+                      className={styles['figure']}
+                      priority
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                    />
+                  </Link>
+                )}
+                <Link href={href} onClick={idleNav} title={event.title}>
+                  <h3>{event.title}</h3>
+                </Link>
+                {event.excerpt ? (
+                  <div className={styles['event-info']}
+                    dangerouslySetInnerHTML={{
+                      __html: event.excerpt,
+                    }}
+                  />
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+      </SidePopup>
       <button className={styles['nav-toggle']} onClick={handleNav}>
         <svg
           className={styles.toggle}
@@ -129,10 +234,11 @@ const SideNav: React.FC = () => {
                 const [title, state] = (item.label === 'Начало' || item.url !== '/') 
                   ? [item.label, ''] 
                   : ['Under development', 'disable'];
+                const clickAction = (item.uri === '/events') ? eventsPopup : idleNav;
 
                 return (
                   <li className={classNames(styles['menu-item'], styles[`item-${index}`], styles[`${state}`])} key={index}>
-                    <Link href={item.url} onClick={idleNav} title={title}>
+                    <Link href={item.url} onClick={clickAction} title={title}>
                       <h3>{item.label}</h3>
                       <div className={`${styles['nav-subtitle']}`}>{item.description}</div>
                     </Link>

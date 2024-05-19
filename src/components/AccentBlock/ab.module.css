@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
   background-position: 50% 35%;
   background-size: cover;
-  border: 3px solid var(--paint-tangerine);
+  border: 0px solid var(--paint-tangerine);
 }
 
 .flex {
