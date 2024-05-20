@@ -267,8 +267,8 @@
   transform-origin: bottom left;
 }
 
-.menu-list li a:hover h3 {
-	color: var(--mode-link);
+.menu-list li a:hover .nav-subtitle {
+	opacity: 0.6;
 }
 
 .menu-list h3 {
@@ -282,6 +282,7 @@
 .nav-subtitle {
 	opacity: 0.4;
 	font-size: 95%;
+	transition: all 0.3s ease-out;
 }
 
 .findus {
@@ -317,13 +318,13 @@
 	border-radius: var(--block-border-radius);
 }
 
-.event-item h3 {
+.list-item h3 {
 	margin: 23px 0;
 	font-size: 22px;
 	line-height: 1;
 }
 
-.event-info {
+.info {
 	line-height: 1.4;
 }
 

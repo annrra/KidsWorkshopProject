@@ -81,30 +81,37 @@ export async function getPartyCards() {
     cache: 'no-store',
     body: JSON.stringify({
       query:`{
-				posts(
-					where: {status: PUBLISH, categoryName: "party", orderby: {field: DATE, order: ASC}}
-				) {
-					nodes {
-						title
-						excerpt
-						uri
-						party {
-							partycardIcon {
-								node {
-									sourceUrl
-									uri
-								}
-							}
-							partycardImage {
-								node {
-									sourceUrl
-									uri
-								}
-							}
-						}
-					}
-				}
-			}`
+        posts(
+          where: {status: PUBLISH, categoryName: "party", orderby: {field: DATE, order: ASC}}
+        ) {
+          nodes {
+            title
+            excerpt
+            uri
+            featuredImage {
+              node {
+                sourceUrl
+                srcSet
+                uri
+              }
+            }
+            party {
+              partycardIcon {
+                node {
+                  sourceUrl
+                  uri
+                }
+              }
+              partycardImage {
+                node {
+                  sourceUrl
+                  uri
+                }
+              }
+            }
+          }
+        }
+      }`
     }),
   });
    

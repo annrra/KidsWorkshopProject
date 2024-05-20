@@ -23,7 +23,7 @@
 	border-radius: 100px;
 	height: 80px;
 	border: 3px solid var(--paint-dark);
-	box-shadow: 3px 0 0 0 var(--mode-light), 0 3px 0 0 var(--mode-light), -3px 0 0 0 var(--mode-light), 0 -3px 0 0 var(--mode-light);
+	box-shadow: 3px 0 0 0 var(--mode-contrast), 0 3px 0 0 var(--mode-contrast), -3px 0 0 0 var(--mode-contrast), 0 -3px 0 0 var(--mode-contrast);
 	padding: 0 14px 0 46px;
 }
 
