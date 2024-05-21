@@ -11,6 +11,7 @@ export async function getAccentContent() {
   const res = await fetch(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
+    cache: 'no-store',
     body: JSON.stringify({
       query:`{
         posts(where: {status: PUBLISH, categoryName: "accent"}) {
