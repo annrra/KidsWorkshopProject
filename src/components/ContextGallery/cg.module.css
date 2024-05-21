@@ -33,11 +33,6 @@
 }
 
 @media only screen and (max-width: 600px) {
-	.gallery {
-		grid-column-gap: 5px;
-		grid-row-gap: 5px;
-	}
-
 	.gallery.fr {
 		grid-template-columns: repeat(1, 1fr);
 	}

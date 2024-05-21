@@ -41,7 +41,7 @@ export default async function Post({ params: {slug} }: PostProps) {
   return (
     <div className={styles.container}>
       <ContextGallery imageData={gallery} fraction />
-      <div className={classNames(styles.content, styles[`${track}`])}>
+      <div className={classNames(styles.content, styles.post, styles[`${track}`])}>
         <h1>{post.post.title}</h1>
         <div className={styles.info}
           dangerouslySetInnerHTML={{
