@@ -33,9 +33,10 @@
   padding: 10px 30px;
   margin: 0 -20px 20px;
   border-radius: 10px;
+  line-height: 1.5;
 }
 
-.prolet h1 {
+.post h1 {
   line-height: 1.1;
 }
 
