@@ -72,9 +72,14 @@ const SideNav: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-    fetchEventsData();
-    fetchPartiesData();
   }, []);
+
+  useEffect(() => {
+    if (sidePopupOpen) {
+      fetchEventsData();
+      fetchPartiesData();
+    }
+  }, [sidePopupOpen]);
 
   useEffect(() => {
     const user = 'ivanova.denitza';
