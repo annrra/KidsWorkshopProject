@@ -131,4 +131,9 @@
 		height: 40px;
 		background-size: 20px 20px;
 	}
+
+	.nl {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
 }

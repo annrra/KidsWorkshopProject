@@ -102,7 +102,15 @@
 
 @media only screen and (max-width: 600px) {
 	.more {
-		right: -15px;
-		bottom: -15px;
+		right: 15px;
+		bottom: -20px;
+	}
+
+	.cards {
+		grid-template-rows: auto;
+  }
+
+	.card-1 h2 {
+		padding-right: 30%;
 	}
 }

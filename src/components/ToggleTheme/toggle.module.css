@@ -44,5 +44,13 @@
 @media only screen and (max-width: 1000px) {
 	.switch {
 		right: 90px;
+		top: 30px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.switch {
+		right: 75px;
+		top: 7px;
 	}
 }

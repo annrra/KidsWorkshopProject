@@ -75,7 +75,7 @@
 
 @media only screen and (max-width: 600px) {
 	.pop {
-		width: calc(100vw - 20px);
+		width: calc(100vw - 15px);
 		transform: translateX(100vw);
 		padding-left: 20px;
 		padding-right: 20px;

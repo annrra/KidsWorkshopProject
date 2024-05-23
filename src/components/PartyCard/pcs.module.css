@@ -86,11 +86,30 @@
 
 @media only screen and (max-width: 600px) {
 	.card {
-		height: 350px;
-		min-height: 350px;
+		height: auto;
+		min-height: auto;
 	}
 
 	.heading {
 		font-size: 24px;
+	}
+
+	.excerpt {
+		padding-right: 50px;
+	}
+
+	.card-icon {
+		top: 3%;
+		right: 3%;
+	}
+
+	.gist {
+		padding-top: 70px;
+		padding-bottom: 70px;
+	}
+
+	.has-image .gist {
+		padding-top: 50px;
+		padding-bottom: 50px;
 	}
 }
