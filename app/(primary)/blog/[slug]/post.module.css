@@ -1,0 +1,55 @@
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.content {
+  width: 55%;
+  margin: 65px auto 80px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.content h2 {
+	margin: 0 0 1rem;
+}
+
+.content ul {
+	list-style-type: none;
+	margin: 0 0 0 20px;
+}
+
+.content ul li {
+	margin: 12px 0;
+	font-size: 90%;
+}
+
+.content p {
+  margin: 0 0 1rem;
+}
+
+.post ul {
+  background-color: var(--mode-pale);
+  padding: 10px 30px;
+  margin: 0 -20px 20px;
+  border-radius: 10px;
+  line-height: 1.5;
+}
+
+.post h1 {
+  line-height: 1.1;
+}
+
+@media only screen and (max-width: 1000px) {
+  .content {
+    width: 75%;
+    margin: 55px auto 70px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    width: 85%;
+    margin: 45px auto 60px;
+  }
+}

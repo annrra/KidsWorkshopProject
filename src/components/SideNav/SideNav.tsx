@@ -5,10 +5,10 @@ import styles from './sn.module.css';
 import classNames from 'classnames';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPrimaryMenu, getEvents, getPartyCards } from '@/lib/api';
+import { getPrimaryMenu, getEvents, getPartyCards, getWorkshops } from '@/lib/api';
 import { ToggleTheme } from '@/src/components/ToggleTheme';
 import { SidePopup } from '@/src/components/_utils/SidePopup';
-import type { MenuProps, EventProps, PartyProps } from './types';
+import type { MenuProps, EventProps, PostProps } from './types';
 
 const SideNav: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -20,6 +20,7 @@ const SideNav: React.FC = () => {
   const [menu, setMenu] = useState<MenuProps[]>([]);
   const [events, setEvents] = useState([]);
   const [parties, setParties] = useState([]);
+  const [workshops, setWorkshops] = useState([]);
   const [sidePopupOpen, setSidePopupOpen] = useState(false);
   const [popupContent, setPopupContent] = useState('');
 
@@ -70,6 +71,17 @@ const SideNav: React.FC = () => {
     }
   };
 
+  const fetchWorkshopsData = async () => {
+    try {
+      const workshopsData = await getWorkshops();
+      const workshopItems = workshopsData.posts.nodes;
+
+      setWorkshops(workshopItems);
+    } catch (error) {
+      console.error('Error fetching parties data:', error);
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -78,6 +90,7 @@ const SideNav: React.FC = () => {
     if (sidePopupOpen) {
       fetchEventsData();
       fetchPartiesData();
+      fetchWorkshopsData();
     }
   }, [sidePopupOpen]);
 
@@ -137,6 +150,18 @@ const SideNav: React.FC = () => {
     };
   }, []);
 
+  let headLine;
+
+  if (popupContent === '/events') {
+    headLine = 'какво се случва';
+  } else if (popupContent === '/party') {
+    headLine = 'видове парти';
+  } else if (popupContent === '/blog') {
+    headLine = 'работилничка';
+  } else {
+    headLine = 'какво се случва';
+  }
+
   return (
     <section
       className={classNames(styles.sidenav, {
@@ -146,7 +171,7 @@ const SideNav: React.FC = () => {
       data-nav={navState ? 'active' : 'idle'}
     >
       <ToggleTheme />
-      <SidePopup open={sidePopupOpen} onClose={() => setSidePopupOpen(false)} headline='какво се случва'>
+      <SidePopup open={sidePopupOpen} onClose={() => setSidePopupOpen(false)} headline={headLine}>
         <div className={styles.sidepop}>
           {popupContent === '/events' && (
             <>
@@ -196,7 +221,7 @@ const SideNav: React.FC = () => {
           )}
           {popupContent === '/party' && (
             <>
-              {parties.map((party: PartyProps, index: number) => {
+              {parties.map((party: PostProps, index: number) => {
                 const href = `/party${party.uri}`;
                 const partyCardImageNode = party.featuredImage?.node;
     
@@ -222,6 +247,44 @@ const SideNav: React.FC = () => {
                           <div className={styles['info']}
                             dangerouslySetInnerHTML={{
                               __html: party.excerpt,
+                            }}
+                          />
+                        ) : null}
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </>
+          )}
+          {popupContent === '/blog' && (
+            <>
+              {workshops.map((workshop: PostProps, index: number) => {
+                const href = `/blog${workshop.uri}`;
+                const workshopImageNode = workshop.featuredImage?.node;
+    
+                return (
+                  <div className={classNames(styles['list-item'], styles[`item-${index}`])} key={index}>
+                    {workshopImageNode?.sourceUrl && (
+                      <>
+                        <Link href={href} onClick={idleNav} title={workshop.title}>
+                          <Image
+                            src={ workshopImageNode.sourceUrl }
+                            alt={workshop.title}
+                            className={styles['figure']}
+                            priority
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                          />
+                        </Link>
+                        <Link href={href} onClick={idleNav} title={workshop.title}>
+                          <h3>{workshop.title}</h3>
+                        </Link>
+                        {workshop.excerpt ? (
+                          <div className={styles['info']}
+                            dangerouslySetInnerHTML={{
+                              __html: workshop.excerpt,
                             }}
                           />
                         ) : null}
@@ -266,7 +329,7 @@ const SideNav: React.FC = () => {
                 const [title, state] = (item.label === 'Начало' || item.url !== '/') 
                   ? [item.label, ''] 
                   : ['Under development', 'disable'];
-                const clickAction = (item.uri === '/events' || item.uri === '/party') 
+                const clickAction = (item.uri === '/events' || item.uri === '/party' || item.uri === '/blog') 
                   ? (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => eventsPopup(e, item.uri)
                   : idleNav;
 

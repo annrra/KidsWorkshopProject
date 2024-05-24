@@ -44,7 +44,7 @@ type PartyDetails = {
   partycardImage?: PartyCardImage;
 };
 
-export type PartyProps = {
+export type PostProps = {
   title: string;
   excerpt: string;
   uri: string;
