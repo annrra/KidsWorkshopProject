@@ -123,4 +123,8 @@
 	.action-link {
 		width: 100%;
 	}
+
+	.hero {
+		padding: 48px 15px;
+	}
 }
