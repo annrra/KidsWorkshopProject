@@ -1,4 +1,5 @@
 export type MenuProps = {
+  title: string;
   label: string;
   description: string;
   databaseId: number;

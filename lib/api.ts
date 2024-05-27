@@ -241,16 +241,17 @@ export async function getPrimaryMenu() {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       query:`{
-				menuItems(where: {location: PRIMARY}) {
-					nodes {
-						label
-						description
-						databaseId
-						url
-						uri
-					}
-				}
-			}`
+        menuItems(where: {location: PRIMARY}) {
+          nodes {
+            title
+            label
+            description
+            databaseId
+            url
+            uri
+          }
+        }
+      }`
     }),
   });
    

@@ -152,11 +152,11 @@ const SideNav: React.FC = () => {
 
   let headLine;
 
-  if (popupContent === '/events') {
+  if (popupContent === 'events') {
     headLine = 'какво се случва';
-  } else if (popupContent === '/party') {
+  } else if (popupContent === 'party') {
     headLine = 'видове парти';
-  } else if (popupContent === '/blog') {
+  } else if (popupContent === 'blog') {
     headLine = 'работилничка';
   } else {
     headLine = 'какво се случва';
@@ -173,7 +173,7 @@ const SideNav: React.FC = () => {
       <ToggleTheme />
       <SidePopup open={sidePopupOpen} onClose={() => setSidePopupOpen(false)} headline={headLine}>
         <div className={styles.sidepop}>
-          {popupContent === '/events' && (
+          {popupContent === 'events' && (
             <>
               {events.map((event: EventProps, index: number) => {
                 const status = (event.events.eventStatus) ? 'ново' : 'отминало';
@@ -219,7 +219,7 @@ const SideNav: React.FC = () => {
               })}
             </>
           )}
-          {popupContent === '/party' && (
+          {popupContent === 'party' && (
             <>
               {parties.map((party: PostProps, index: number) => {
                 const href = `/party${party.uri}`;
@@ -257,7 +257,7 @@ const SideNav: React.FC = () => {
               })}
             </>
           )}
-          {popupContent === '/blog' && (
+          {popupContent === 'blog' && (
             <>
               {workshops.map((workshop: PostProps, index: number) => {
                 const href = `/blog${workshop.uri}`;
@@ -326,15 +326,13 @@ const SideNav: React.FC = () => {
           <div className={styles.menu}>
             <ul className={styles['menu-list']}>
               {menu.map((item: MenuProps, index: number) => {
-                const [title, state] = (item.label === 'Начало' || item.url !== '/') 
-                  ? [item.label, ''] 
-                  : ['Under development', 'disable'];
-                const clickAction = (item.uri === '/events' || item.uri === '/party' || item.uri === '/blog') 
-                  ? (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => eventsPopup(e, item.uri)
+                const title = item.label;
+                const clickAction = (item.title === 'events' || item.title === 'party' || item.title === 'blog') 
+                  ? (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => eventsPopup(e, item.title)
                   : idleNav;
 
                 return (
-                  <li className={classNames(styles['menu-item'], styles[`item-${index}`], styles[`${state}`])} key={index}>
+                  <li className={classNames(styles['menu-item'], styles[`item-${index}`])} key={index}>
                     <Link href={item.url} onClick={clickAction} title={title}>
                       <h3>{item.label}</h3>
                       <div className={`${styles['nav-subtitle']}`}>{item.description}</div>

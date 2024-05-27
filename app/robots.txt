@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+Disallow: /party/thematic/
+Sitemap: https://sharenotoparty.com/sitemap.xml

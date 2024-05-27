@@ -102,6 +102,17 @@
 		width: 294px;
 		height: 294px;
 	}
+
+	.icon-wrap {
+		width: 74px;
+		height: 74px;
+		top: 10px;
+	}
+	
+	.icon {
+		width: 74px;
+		height: 74px;
+	}
 }
 
 @media only screen and (max-width: 800px) {
