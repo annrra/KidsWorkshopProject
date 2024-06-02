@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { metadata } from '@/app/layout';
 import classNames from 'classnames';
 import styles from './f.module.css';
 
@@ -19,8 +18,8 @@ const MailtoLink: React.FC<{ email: string }> = ({ email }) => {
 
 const Footer: React.FC = async () => {
   const button = '/button.png';
-  const metaTitle = metadata.title || 'Sharenoto Party';
-  const metaDescription = metadata.description || 'Sharenoto Party';
+  const metaTitle = 'Шареното парти';
+  const metaDescription = 'Различното парти за твоето дете';
 
   return (
     <footer className={styles.footer}>
@@ -29,7 +28,7 @@ const Footer: React.FC = async () => {
           <div className={styles.flex}>
             <Image
               src={button}
-              alt={String(metaTitle)}
+              alt={metaTitle}
               className={`${styles['button-figure']}`}
               priority
               width={0}
@@ -37,7 +36,7 @@ const Footer: React.FC = async () => {
               sizes="100vw"
             />
             <div className={styles.right}>
-              <div>{String(metaTitle)}</div>
+              <div>{metaTitle}</div>
               <div>{metaDescription}</div>
             </div>
           </div>
