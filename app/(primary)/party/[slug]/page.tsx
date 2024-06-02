@@ -1,20 +1,15 @@
 import styles from './post.module.css';
 import { getPartyBySlug } from '@/lib/api';
+import { generatePageMetadata } from '@/src/components/_utils/MetaDataUtil/MetaDataUtil';
 import { PartyHero } from '@/src/components/PartyHero';
 import { PartyIdea } from '@/src/components/PartyIdea';
 import { PartyDetails } from '@/src/components/PartyDetails';
 import { notFound } from 'next/navigation';
 import classNames from 'classnames';
+import type { PostProps, Category } from './types';
 
-type PostProps = {
-  params: {
-    slug: string;
-  };
-}
-
-type Category = {
-  name: string;
-  slug: string;
+export async function generateMetadata({ params: { slug } }: PostProps) {
+  return await generatePageMetadata(slug);
 }
 
 export default async function Post({ params: {slug} }: PostProps) {

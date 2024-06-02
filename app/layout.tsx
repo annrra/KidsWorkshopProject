@@ -6,6 +6,15 @@ import localFont from 'next/font/local';
 import { ThemeContextProvider } from '@/src/context';
 import PiwikProProvider from '@piwikpro/next-piwik-pro';
 
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Шареното парти',
+    default: 'Шареното парти',
+  },
+  description: 'Различното парти за твоето дете. Организиране на детски рождени дни, работилнички за приложни изкуства и други забавления за малки и големи.',
+  metadataBase: new URL('https://sharenotoparty.com'),
+};
+
 const gilroy = localFont({
   src: [
     {
@@ -21,11 +30,6 @@ const gilroy = localFont({
   ],
   variable: '--font-gilroy',
 });
-
-export const metadata: Metadata = {
-  title: "Шареното парти",
-  description: "Различното парти за твоето дете",
-};
 
 export default function RootLayout({
   children,

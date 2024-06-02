@@ -1,18 +1,13 @@
 import styles from './post.module.css';
 import { ContextGallery } from '@/src/components/ContextGallery';
+import { generatePageMetadata } from '@/src/components/_utils/MetaDataUtil/MetaDataUtil';
 import { getPostBySlug } from '@/lib/api';
 import { notFound } from 'next/navigation';
 import classNames from 'classnames';
+import type { PostProps, Category } from './types';
 
-type PostProps = {
-  params: {
-    slug: string;
-  };
-}
-
-type Category = {
-  name: string;
-  slug: string;
+export async function generateMetadata({ params: { slug } }: PostProps) {
+  return await generatePageMetadata(slug);
 }
 
 export default async function Post({ params: {slug} }: PostProps) {

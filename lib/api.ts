@@ -404,6 +404,56 @@ export async function getPostBySlug(slug: string) {
   return json.data;
 }
 
+export async function getMetaBySlug(slug: string) {
+	if (!API_URL) {
+    console.error('API_URL is not defined.');
+    return;
+  }
+
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    cache: 'no-store',
+    body: JSON.stringify({
+      query:`{
+        post(id: "${slug}", idType: URI) {
+          title
+          excerpt
+          uri
+          slug
+          status
+          categories(where: {name: "events"}) {
+            nodes {
+              name
+              slug
+            }
+          }
+          meta {
+            metaTitle
+            metaDescription
+            metaOpengraphimage {
+              node {
+                sourceUrl
+                srcSet
+                uri
+              }
+            }
+          }
+        }
+      }`
+    }),
+  });
+   
+  // Handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+
+  const json = await res.json();
+  return json.data;
+}
+
 export async function getWorkshopBySlug(slug: string) {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
