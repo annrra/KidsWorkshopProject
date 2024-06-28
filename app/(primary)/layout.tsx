@@ -1,6 +1,6 @@
 import styles from './page.module.css';
 import { Header } from '@/src/components/Header';
-import { SideNav } from '@/src/components/SideNav';
+import { SideNav, SideNavServer } from '@/src/components/SideNav';
 import { Footer } from '@/src/components/Footer';
 
 export default function PrimaryLayout({
@@ -10,7 +10,7 @@ export default function PrimaryLayout({
 }>) {
   return (
     <div className={styles.reactive}>
-      <SideNav />
+      <SideNavServer />
       <Header />
       <div className={styles.core}>
         {children}
