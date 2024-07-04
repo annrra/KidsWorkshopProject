@@ -52,3 +52,10 @@ export type PostProps = {
   featuredImage: FeaturedImage;
   party: PartyDetails;
 };
+
+export type SideNavClientProps = {
+  menu: MenuProps[];
+  events: EventProps[];
+  parties: PostProps[];
+  workshops: PostProps[];
+}

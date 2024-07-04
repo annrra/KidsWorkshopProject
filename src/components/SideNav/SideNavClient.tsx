@@ -7,14 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ToggleTheme } from '@/src/components/ToggleTheme';
 import { SidePopup } from '@/src/components/_utils/SidePopup';
-import type { MenuProps, EventProps, PostProps } from './types';
-
-type SideNavClientProps = {
-  menu: MenuProps[];
-  events: EventProps[];
-  parties: PostProps[];
-  workshops: PostProps[];
-}
+import type { MenuProps, EventProps, PostProps, SideNavClientProps } from './types';
 
 const SideNavClient: React.FC<SideNavClientProps> = ({ menu, events, parties, workshops }) => {
   const [email, setEmail] = useState('');
