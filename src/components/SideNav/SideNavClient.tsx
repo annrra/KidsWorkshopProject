@@ -9,21 +9,46 @@ import { ToggleTheme } from '@/src/components/ToggleTheme';
 import { SidePopup } from '@/src/components/_utils/SidePopup';
 import type { MenuProps, EventProps, PostProps, SideNavClientProps } from './types';
 
+/**
+ * Side navigation component.
+ * 
+ * This component renders a navigation pane which includes the main application menu and a side navigation panel with events, parties, and workshops.
+ * It also handles various states related to the content, navigation and side panel visibility.
+ * 
+ * @solves Provides a consistent and interactive side navigation for different sections of the application.
+ * @explanation Designed to be flexible and handle dynamic content such as menus and side panel dialogs with excerpts and previews for different sections of the application.
+ * @param menu - array of objects (MenuProps) representing the menu items
+ * @param events - array of objects (EventProps) representing the events
+ * @param parties - array of objects (PostProps) representing the party posts
+ * @param workshops - array of objects (PostProps) representing the workshop posts
+ * @returns {JSX.Element} The rendered side navigation component with interactive features.
+ */
 const SideNavClient: React.FC<SideNavClientProps> = ({ menu, events, parties, workshops }) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [navState, setNavState] = useState(false);
   const [shift, setShift] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [showToggle, setShowToggle] = useState(true);
   const [sidePopupOpen, setSidePopupOpen] = useState(false);
   const [popupContent, setPopupContent] = useState('');
 
+  /**
+   * SVG path data for an animated blob effect.
+   * 
+   * @solves Contains two SVG path definitions for animation.
+   * @explanation The paths represent the blob shapes between which `motion.path` will morph based on the `pathVariants` animation.
+   */
   const blobRange = [
     `M-0.5 -0.5C54.8333 -0.5 110.167 -0.5 165.5 -0.5C165.5 54.8333 165.5 110.167 165.5 165.5C164.833 165.5 164.167 165.5 163.5 165.5C131 158 132.5 134 112 129.5C91.5 125 80.5 138.5 63.5 131.833C46.5 125.167 69.5 96 61.5 79.5C53.5 63 26.614 79.7023 18.0519 65C12.6181 55.6695 19 36 19 27.5C19 19 9.73667 8.89435 1.5 2C0.905578 1.53566 0.238911 1.36899 -0.5 1.5C-0.5 0.833333 -0.5 0.166667 -0.5 -0.5Z`,
     `M-0.5 -0.5C54.8333 -0.5 110.167 -0.5 165.5 -0.5C165.5 54.8333 165.5 110.167 165.5 165.5C164.833 165.5 164.167 165.5 163.5 165.5C138 140.5 119 151 104 144.5C89 138 100.5 118.167 83.5 111.5C66.5 104.833 49 116 41 99.5C33 83 46.5621 74.7023 38 60C32.5662 50.6695 9 44.5 5.5 36C2 27.5 9.73667 8.89435 1.5 2C0.905578 1.53566 0.238911 1.36899 -0.5 1.5C-0.5 0.833333 -0.5 0.166667 -0.5 -0.5Z`
   ];
 
+  /**
+   * Animation variants for the SVG path.
+   * 
+   * @solves Defines two animation states for `motion.path` component.
+   * @explanation `on` state uses the first path from `blobRange`, and `off` state uses the second path. 
+   * This controls path data (`d` attribute) based on the animation state (`on` or `off`).
+   */
   const pathVariants = {
     on: {
       d: blobRange[0]
@@ -34,6 +59,14 @@ const SideNavClient: React.FC<SideNavClientProps> = ({ menu, events, parties, wo
   };
 
   useEffect(() => {
+    /**
+     * Set email and phone state to prevent harvesting by bots.
+     * 
+     * @solves Prevents direct exposure of email and phone number in the HTML source.
+     * @explanation 
+     * - Constructs email and phone number from separate parts and sets them in the state.
+     * - By using state to manage these values, they are not directly embedded in the HTML when page initially loads, providing a security measure against harvesting bots.
+     */
     const user = 'ivanova.denitza';
     const domain = 'gmail.com';
     setEmail(`${user}@${domain}`);
@@ -43,6 +76,12 @@ const SideNavClient: React.FC<SideNavClientProps> = ({ menu, events, parties, wo
     setPhone(`${code}${number}`);
   }, []);
 
+  /**
+   * Function to toggle navigation state and manage the toggle button animation.
+   * 
+   * @solves Toggles the visibility of the navigation pane and initiates a transform/shift animation on the toggle button.
+   * @explanation Changes `navState` to show or hide the navigation and sets a brief shift animation using `setTimeout`. Closes the side popup panel when navigation is toggled.
+   */
   const handleNav = () => {
     setNavState(!navState);
     setShift(true);
@@ -52,6 +91,12 @@ const SideNavClient: React.FC<SideNavClientProps> = ({ menu, events, parties, wo
     setSidePopupOpen(false);
   }
 
+  /**
+   * Manage `nav-open` class on the document body based on `navState`.
+   * 
+   * @solves Adds or removes `nav-open` class to/from body element to prevent scrolling when navigation is active.
+   * @explanation Adds the class when `navState` is true and removes it when false or when the component unmounts to ensure proper body styling.
+   */
   useEffect(() => {
     if (navState) {
       document.body.classList.add('nav-open');
@@ -65,30 +110,40 @@ const SideNavClient: React.FC<SideNavClientProps> = ({ menu, events, parties, wo
     };
   }, [navState]);
 
+  /**
+   * Function to reset navigation state to idle and close the side panel popup.
+   * 
+   * @solves Closes the navigation menu and the side panel popup.
+   * @explanation Sets `navState` to false and closes the side panel by setting `sidePopupOpen` to false.
+   */
   const idleNav = () => {
     setNavState(false);
     setSidePopupOpen(false);
   };
 
+  /**
+   * Function to open side panel popup with specified content type.
+   * 
+   * @solves Opens side panel popup and sets the content type to be displayed.
+   * @explanation Sets the `popupContent` state to the selected content type, and opens the side panel popup.
+   * 
+   * @param {React.MouseEvent<HTMLAnchorElement, MouseEvent>} e - The click event.
+   * @param {string} contentType - The type of content to display in the side panel (e.g., 'events', 'party', 'blog').
+   */
   const eventsPopup = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, contentType: string) => {
     e.preventDefault();
     setPopupContent(contentType);
     setSidePopupOpen(true);
   };
 
-  const handleScroll = () => {
-    const position = window.scrollY;
-    setScrollPosition(position);
-    setShowToggle(position <= 200);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+  /**
+   * Determine headline for the side panel popup based on `popupContent`.
+   * 
+   * @solves Sets headline text for the side panel according to the content type.
+   * @explanation Uses a series of conditions to set the headline text based on the value of `popupContent`.
+   * 
+   * @type {string}
+   */
   let headLine;
 
   if (popupContent === 'events') {
@@ -104,7 +159,6 @@ const SideNavClient: React.FC<SideNavClientProps> = ({ menu, events, parties, wo
   return (
     <section
       className={classNames(styles.sidenav, {
-        [styles.hide]: !showToggle,
         [styles.shift]: shift
       })}
       data-nav={navState ? 'active' : 'idle'}
@@ -236,6 +290,7 @@ const SideNavClient: React.FC<SideNavClientProps> = ({ menu, events, parties, wo
           )}
         </div>
       </SidePopup>
+      {/* Toggle button for opening/closing the navigation */}
       <button className={styles['nav-toggle']} onClick={handleNav}>
         <svg
           className={styles.toggle}
@@ -243,6 +298,7 @@ const SideNavClient: React.FC<SideNavClientProps> = ({ menu, events, parties, wo
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          {/* Framer Motion animated path for the blob effect */}
           <motion.path
             className={styles['toggle-path']}
             d="M-0.5 -0.5C54.8333 -0.5 110.167 -0.5 165.5 -0.5C165.5 54.8333 165.5 110.167 165.5 165.5C164.833 165.5 164.167 165.5 163.5 165.5C131 158 132.5 134 112 129.5C91.5 125 80.5 138.5 63.5 131.833C46.5 125.167 69.5 96 61.5 79.5C53.5 63 26.614 79.7023 18.0519 65C12.6181 55.6695 19 36 19 27.5C19 19 9.73667 8.89435 1.5 2C0.905578 1.53566 0.238911 1.36899 -0.5 1.5C-0.5 0.833333 -0.5 0.166667 -0.5 -0.5Z"

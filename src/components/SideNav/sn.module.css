@@ -18,19 +18,10 @@
 	transition: all 0.3s ease-in-out;
 }
 
-.hide[data-nav="idle"] .nav-toggle {
-	opacity: 0;
-	pointer-events: none;
-}
-
 .sidenav [data-toggle="toggle"] {
 	opacity: 1;
 	transition: all 0.3s ease-in-out;
 	transition-delay: 150ms;
-}
-
-.hide [data-toggle="toggle"] {
-	opacity: 0;
 }
 
 .toggle {
