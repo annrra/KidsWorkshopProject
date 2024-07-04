@@ -1,6 +1,6 @@
 import styles from './page.module.css';
 import { Header } from '@/src/components/Header';
-import { SideNav, SideNavServer } from '@/src/components/SideNav';
+import { SideNavServer } from '@/src/components/SideNav';
 import { Footer } from '@/src/components/Footer';
 
 export default function PrimaryLayout({

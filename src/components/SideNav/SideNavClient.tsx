@@ -5,7 +5,6 @@ import styles from './sn.module.css';
 import classNames from 'classnames';
 import Link from 'next/link';
 import Image from 'next/image';
-//import { getPrimaryMenu, getEvents, getPartyCards, getWorkshops } from '@/lib/api';
 import { ToggleTheme } from '@/src/components/ToggleTheme';
 import { SidePopup } from '@/src/components/_utils/SidePopup';
 import type { MenuProps, EventProps, PostProps } from './types';
