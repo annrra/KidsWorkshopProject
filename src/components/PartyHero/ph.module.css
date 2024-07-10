@@ -123,6 +123,7 @@
 	.data {
 		text-align: center;
 		margin-top: 30px;
+		padding: 0 10px;
 	}
 
 	.hero {
