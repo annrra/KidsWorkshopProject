@@ -4,7 +4,6 @@ import 'normalize.css/normalize.css';
 import './globals.css';
 import localFont from 'next/font/local';
 import { ThemeContextProvider } from '@/src/context';
-import PiwikProProvider from '@piwikpro/next-piwik-pro';
 
 export const metadata: Metadata = {
   title: {
@@ -36,17 +35,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const containerUrl = process.env.NEXT_PUBLIC_CONTAINER_URL || 'container-url';
-  const containerId = process.env.NEXT_PUBLIC_CONTAINER_ID || 'container-id';
 
   return (
     <html lang="en">
       <body className={gilroy.variable}>
         <ThemeContextProvider>
           <div className={styles.mode}>
-            <PiwikProProvider containerUrl={containerUrl} containerId={containerId}>
-              {children}
-            </PiwikProProvider>
+            {children}
           </div>
         </ThemeContextProvider>
       </body>
