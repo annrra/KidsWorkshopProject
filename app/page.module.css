@@ -114,3 +114,10 @@
   height: auto;
   animation: rotate 0.7s infinite linear;
 }
+
+.link-button {
+  color: var(--mode-link);
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}

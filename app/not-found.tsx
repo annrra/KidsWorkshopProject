@@ -12,7 +12,7 @@ export default function NotFound() {
 					<path className={styles.eye} d="M194.733 75.4667C189.933 78.2667 192.6 86 198.333 86C203.933 86 206.2 80.1333 202.2 76.1333C199.8 73.7333 197.933 73.4667 194.733 75.4667Z"/>
 				</svg>
 				<h2>Page not found</h2>
-				<div>Currently sharenotoparty is under active development.<br />Try again later, or go to <Link href="/">homepage</Link>.</div>
+				<div>Try again later, or go to <Link href="/">homepage</Link>.</div>
 			</div>
 		</div>
 	)
