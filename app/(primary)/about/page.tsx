@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 export default async function About() {
   const galleryData = await getAboutContent();
-  const gallery = galleryData.pageBy.gallery;
+  const gallery = galleryData?.pageBy?.gallery;
 
   return (
     <div className={styles.container}>
-      <ContextGallery imageData={gallery} />
+      {gallery ? <ContextGallery imageData={gallery} /> : null}
       <Apropos />
     </div>
   );

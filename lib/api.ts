@@ -2,13 +2,41 @@ require('dotenv').config();
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+/** Timeout in ms for WordPress API calls. Prevents hanging and "Connection closed" when hosting is slow. */
+const FETCH_TIMEOUT_MS = 10_000;
+
+async function fetchWithTimeout(
+  url: string,
+  options: RequestInit & { timeout?: number } = {}
+): Promise<Response | null> {
+  const { timeout = FETCH_TIMEOUT_MS, ...fetchOptions } = options;
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  try {
+    const res = await fetch(url, {
+      ...fetchOptions,
+      signal: controller.signal,
+    });
+    return res;
+  } catch (err) {
+    if (err instanceof Error && err.name === 'AbortError') {
+      console.error('[api] Request timeout:', url);
+    } else {
+      console.error('[api] Request failed:', err);
+    }
+    return null;
+  } finally {
+    clearTimeout(id);
+  }
+}
+
 export async function getAccentContent() {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return { posts: { nodes: [] } };
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     cache: 'no-store',
@@ -60,23 +88,21 @@ export async function getAccentContent() {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return { posts: { nodes: [] } };
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? { posts: { nodes: [] } };
 }
 
 export async function getPartyCards() {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return { posts: { nodes: [] } };
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     cache: 'no-store',
@@ -116,23 +142,21 @@ export async function getPartyCards() {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return { posts: { nodes: [] } };
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? { posts: { nodes: [] } };
 }
 
 export async function getReviewsNotes() {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return { posts: { nodes: [] } };
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -157,23 +181,21 @@ export async function getReviewsNotes() {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return { posts: { nodes: [] } };
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? { posts: { nodes: [] } };
 }
 
 export async function getReviewsCategory() {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return { categories: { nodes: [] } };
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -189,23 +211,21 @@ export async function getReviewsCategory() {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return { categories: { nodes: [] } };
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? { categories: { nodes: [] } };
 }
 
 export async function getNewsletterContent() {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return null;
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -220,23 +240,21 @@ export async function getNewsletterContent() {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return null;
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? null;
 }
 
 export async function getPrimaryMenu() {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return { menuItems: { nodes: [] } };
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -255,23 +273,21 @@ export async function getPrimaryMenu() {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return { menuItems: { nodes: [] } };
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? { menuItems: { nodes: [] } };
 }
 
 export async function getAboutContent() {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return null;
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -322,23 +338,21 @@ export async function getAboutContent() {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return null;
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? null;
 }
 
 export async function getPostBySlug(slug: string) {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return null;
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     cache: 'no-store',
@@ -394,23 +408,21 @@ export async function getPostBySlug(slug: string) {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return null;
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? null;
 }
 
 export async function getMetaBySlug(slug: string) {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return null;
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     cache: 'no-store',
@@ -444,23 +456,21 @@ export async function getMetaBySlug(slug: string) {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return null;
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? null;
 }
 
 export async function getWorkshopBySlug(slug: string) {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return null;
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     cache: 'no-store',
@@ -516,23 +526,21 @@ export async function getWorkshopBySlug(slug: string) {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return null;
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? null;
 }
 
 export async function getContactContent() {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return null;
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     cache: 'no-store',
@@ -555,23 +563,21 @@ export async function getContactContent() {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return null;
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? null;
 }
 
 export async function getPartyBySlug(slug: string) {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return null;
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     cache: 'no-store',
@@ -642,23 +648,21 @@ export async function getPartyBySlug(slug: string) {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return null;
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? null;
 }
 
 export async function getEvents() {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return { posts: { nodes: [] } };
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -688,23 +692,21 @@ export async function getEvents() {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return { posts: { nodes: [] } };
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? { posts: { nodes: [] } };
 }
 
 export async function getWorkshops() {
 	if (!API_URL) {
     console.error('API_URL is not defined.');
-    return;
+    return { posts: { nodes: [] } };
   }
 
-  const res = await fetch(API_URL, {
+  const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -729,12 +731,10 @@ export async function getWorkshops() {
     }),
   });
    
-  // Handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
+  if (!res || !res.ok) {
+    return { posts: { nodes: [] } };
   }
 
   const json = await res.json();
-  return json.data;
+  return json.data ?? { posts: { nodes: [] } };
 }

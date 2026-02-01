@@ -8,24 +8,34 @@ import classNames from 'classnames';
 const AccentBlock: React.FC = async () => {
   const badge = '/badge.svg';
   const accentData = await getAccentContent();
-  const accent = accentData.posts.nodes[0];
+  const accent = accentData?.posts?.nodes?.[0];
 
   let accentTitle, accentHeading, accentSubHeading, accentExcerpt, accentUri, accentButton, accentDate, accentUrl, accentPromoLink, accentVideo, accentImageSourceUrl;
 
   if (accent) {
     accentTitle = accent.title;
-    accentHeading = accent.accent.accentHeading1;
-    accentSubHeading = accent.accent.accentHeading2;
+    accentHeading = accent.accent?.accentHeading1;
+    accentSubHeading = accent.accent?.accentHeading2;
     accentExcerpt = accent.excerpt;
     accentUri = accent.uri;
-    accentButton = accent.accent.accentButton;
-    accentDate = accent.accent.accentDate;
-    accentUrl = accent.accent.accentUrl?.nodes[0]?.uri;
-    accentPromoLink = accent.accent.accentPromoLink?.nodes[0]?.uri;
-    accentVideo = accent.accent.accentVideo;
-    accentImageSourceUrl = accent.featuredImage.node.sourceUrl;
+    accentButton = accent.accent?.accentButton;
+    accentDate = accent.accent?.accentDate;
+    accentUrl = accent.accent?.accentUrl?.nodes?.[0]?.uri;
+    accentPromoLink = accent.accent?.accentPromoLink?.nodes?.[0]?.uri;
+    accentVideo = accent.accent?.accentVideo;
+    accentImageSourceUrl = accent.featuredImage?.node?.sourceUrl;
   } else {
     console.error('Accent post/s not found.');
+  }
+
+  if (!accentHeading || !accentSubHeading || !accentImageSourceUrl) {
+    return (
+      <section className={styles.hero} aria-hidden="true">
+        <div className={classNames(styles.flex, styles.cl2)}>
+          <p>Моля, опреснете страницата.</p>
+        </div>
+      </section>
+    );
   }
 
   return (

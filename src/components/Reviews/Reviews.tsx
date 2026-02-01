@@ -60,9 +60,9 @@ const Reviews: React.FC = () => {
   const fetchData = async () => {
     try {
       const categoryData = await getReviewsCategory();
-      const category = categoryData.categories.nodes;
+      const category = categoryData?.categories?.nodes ?? [];
       const reviewsData = await getReviewsNotes();
-      const reviews = reviewsData.posts.nodes;
+      const reviews = reviewsData?.posts?.nodes ?? [];
       const mixReviews = shuffleItems(reviews).slice(0, 2);
 
       setCategory(category);
@@ -82,7 +82,7 @@ const Reviews: React.FC = () => {
   const handleRefresh = async () => {
     setRefresh(true);
     const reviewsData = await getReviewsNotes();
-    const reviews = reviewsData.posts.nodes;
+    const reviews = reviewsData?.posts?.nodes ?? [];
     const reloadReviews = shuffleItems(reviews).slice(0, 2);
 
     setReviews(reviews);

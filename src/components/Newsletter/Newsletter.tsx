@@ -20,12 +20,10 @@ const Newsletter: React.FC = () => {
   const fetchData = async () => {
     try {
       const newsletterData = await getNewsletterContent();
-      const newsletter = newsletterData.pageBy;
-      const newsletterTitle = newsletter.title;
-      const newsletterContent = newsletter.content;
-
-      setTitle(newsletterTitle);
-      setContent(newsletterContent);
+      const newsletter = newsletterData?.pageBy;
+      if (!newsletter) return;
+      setTitle(newsletter.title ?? '');
+      setContent(newsletter.content ?? '');
     } catch (error) {
       console.error('Error fetching data:', error);
     }

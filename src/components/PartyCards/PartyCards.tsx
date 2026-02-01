@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const PartyCards: React.FC = async () => {
   const cardsData = await getPartyCards();
-  const cardsList = cardsData.posts.nodes;
+  const cardsList = cardsData?.posts?.nodes ?? [];
   const cards = cardsList.slice(0, 3);
 
   return (
