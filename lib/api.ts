@@ -3,7 +3,7 @@ require('dotenv').config();
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 /** Timeout in ms for WordPress API calls. Prevents hanging and "Connection closed" when hosting is slow. */
-const FETCH_TIMEOUT_MS = 10_000;
+const FETCH_TIMEOUT_MS = 20_000;
 
 async function fetchWithTimeout(
   url: string,
@@ -39,7 +39,6 @@ export async function getAccentContent() {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
     body: JSON.stringify({
       query:`{
         posts(where: {status: PUBLISH, categoryName: "accent"}) {
@@ -105,7 +104,6 @@ export async function getPartyCards() {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
     body: JSON.stringify({
       query:`{
         posts(
@@ -355,7 +353,6 @@ export async function getPostBySlug(slug: string) {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
     body: JSON.stringify({
       query:`{
         post(id: "${slug}", idType: URI) {
@@ -425,7 +422,6 @@ export async function getMetaBySlug(slug: string) {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
     body: JSON.stringify({
       query:`{
         post(id: "${slug}", idType: URI) {
@@ -473,7 +469,6 @@ export async function getWorkshopBySlug(slug: string) {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
     body: JSON.stringify({
       query:`{
         post(id: "${slug}", idType: URI) {
@@ -543,7 +538,6 @@ export async function getContactContent() {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
     body: JSON.stringify({
       query:`{
         pageBy(uri: "contact") {
@@ -580,7 +574,6 @@ export async function getPartyBySlug(slug: string) {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
     body: JSON.stringify({
       query:`{
         post(id: "${slug}", idType: URI) {
