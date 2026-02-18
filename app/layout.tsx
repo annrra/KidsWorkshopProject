@@ -4,6 +4,7 @@ import 'normalize.css/normalize.css';
 import './globals.css';
 import localFont from 'next/font/local';
 import { ThemeContextProvider } from '@/src/context';
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: {
