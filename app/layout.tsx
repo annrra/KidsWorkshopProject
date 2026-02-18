@@ -43,6 +43,7 @@ export default function RootLayout({
         <ThemeContextProvider>
           <div className={styles.mode}>
             {children}
+            <Analytics />
           </div>
         </ThemeContextProvider>
       </body>
