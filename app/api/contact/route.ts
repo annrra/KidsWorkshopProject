@@ -1,7 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server';
 import nodemailer from 'nodemailer';
-require('dotenv').config();
-
 
 export async function POST(request: NextRequest) {
   const username = process.env.EMAIL_USER;
