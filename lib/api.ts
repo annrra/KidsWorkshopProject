@@ -639,7 +639,6 @@ export async function getPartyBySlug(slug: string) {
         }
       }`
     }),
-    next: { revalidate: 60 }
   });
    
   if (!res || !res.ok) {
