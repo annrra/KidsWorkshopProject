@@ -639,7 +639,7 @@ export async function getPartyBySlug(slug: string) {
         }
       }`
     }),
-    next: { cache: 'no-store' }
+    next: { revalidate: 60 }
   });
    
   if (!res || !res.ok) {
